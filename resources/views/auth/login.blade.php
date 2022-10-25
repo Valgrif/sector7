@@ -26,6 +26,7 @@
                 <x-input-label for="password" :value="__('Password')" />
 
                 <x-text-input id="password" class="block mt-1 w-full"
+                                placeholder="Recuerda son 8 digitos"
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
