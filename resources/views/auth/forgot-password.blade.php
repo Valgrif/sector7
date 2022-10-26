@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('¿Olvidó su password? Sin problema. Escriba su email y le enviaremos una respuesta con enlace para restablecer su password.') }}
+            {{ __('¿Olvidó su password? Sin problema. Escriba su email y le enviaremos una respuesta con  un enlace para restablecer su password.') }}
         </div>
 
         <!-- Session Status -->
