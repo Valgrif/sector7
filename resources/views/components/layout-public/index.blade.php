@@ -104,7 +104,7 @@
                     <p class="lead">
                         <br> Teléfono: +34 922 10 20 30
                         <br> <br> Móvil: +34 666 333 666
-                        <br> <br> email: sector7@gmail.com
+                        <br> <br> e-mail: sector7@gmail.com
                     <p>
                 </div>
                 <div class="col-md-5 order-md-1">
