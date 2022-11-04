@@ -62,7 +62,7 @@
             <!-- START THE FEATURETTES -->
 
             <hr class="featurette-divider">
-            <br><br><br><br>
+            <br><br>
 
 
             <div class="row featurette" id="aboutUs">
@@ -99,7 +99,7 @@
 
             <div class="row featurette" id="contact">
                 <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Contacta con nosotros!! <span class="text-muted">Estaremos encantados
+                    <h2 class="featurette-heading">Contacta con nosotros. <span class="text-muted">Estaremos encantados
                             de poder ayudarte.</span></h2>
                     <p class="lead">
                         <br> Teléfono: +34 922 10 20 30
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <br><br><br><br>
+            <br><br>
             <hr class="featurette-divider">
 
             <div class="row featurette" id="location">
