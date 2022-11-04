@@ -26,14 +26,10 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
         <!-- Marketing messaging and featurettes
     ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
         <br>
-        <!--ligera trampa -->
         <div class="container marketing">
-
             <!-- Three columns of text below the carousel -->
             <div class="row" id="services">
                 <div class="col-lg-4">
@@ -57,14 +53,9 @@
                     <p>Si un equipo falla dejanoslo en nuestras manos y será reparado en tiempo record</p>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
-
-            <br><br><br><br>
             <!-- START THE FEATURETTES -->
-
             <hr class="featurette-divider">
             <br><br>
-
-
             <div class="row featurette" id="aboutUs">
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Somos una empresa nacida en el año 2011. <br><span
@@ -82,9 +73,7 @@
                         <li>Administradores de redes</li><br>
                         <li>Programadores web</li>
                     </ul>
-                    <br>
-
-                    </p>
+                    <br></p>
                 </div>
                 <div class="col-md-5">
                     <img src="{{ url('/images/mac.png') }}" alt=""
@@ -92,11 +81,9 @@
                         width="auto" height="20%">
                 </div>
             </div>
-            <br><br><br><br>
+            <br><br>
             <hr class="featurette-divider">
-            <br><br><br><br>
-
-
+            <br><br>
             <div class="row featurette" id="contact">
                 <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading">Contacta con nosotros. <span class="text-muted">Estaremos encantados
@@ -113,10 +100,8 @@
                         width="auto" height="20%">
                 </div>
             </div>
-
             <br><br>
             <hr class="featurette-divider">
-
             <div class="row featurette" id="location">
                 <div class="col-md-12">
                     <h2 class="featurette-heading">Donde estamos
@@ -127,16 +112,9 @@
                     <!--Google Maps-->
                 </div>
             </div>
-
             <hr class="featurette-divider">
-
             <!-- /END THE FEATURETTES -->
-
         </div><!-- /.container -->
-
-
-        <!-- FOOTER -->
-
     </main>
 
     <x-layout-public.footer />
