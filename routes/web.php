@@ -44,6 +44,3 @@ Route::get('/', function(){
 Route::get('/event', [EventController::class, 'index']);
 
 
-// GOOGLE MAP
-
-Route::get('google-autocomplete', [GoogleController::class, 'index']);

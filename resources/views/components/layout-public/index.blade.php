@@ -9,10 +9,10 @@
                     <img src="{{ url('/images/marcas.png') }}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ url('/images/especialidad.png') }}" class="d-block w-100" alt="...">
+                    <img src="{{ url('/images/comentarios.png') }}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ url('/images/comentarios.png') }}" class="d-block w-100" alt="...">
+                    <img src="{{ url('/images/especialidad.png') }}" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -30,7 +30,7 @@
         <!-- Marketing messaging and featurettes
     ================================================== -->
         <!-- Wrap the rest of the page in another container to center all the content. -->
-        <div><br></div>
+        <br>
         <!--ligera trampa -->
         <div class="container marketing">
 
@@ -67,7 +67,7 @@
 
             <div class="row featurette" id="aboutUs">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">Somos una empresa nacida en el año 2014. <br><span
+                    <h2 class="featurette-heading">Somos una empresa nacida en el año 2011. <br><span
                             class="text-muted">
                             Con más de 10 años de experiencia</span></h2>
                     <p class="lead">Sector 7 nace para ofertar el mejor de los servicios de aseramiento,
@@ -102,9 +102,9 @@
                     <h2 class="featurette-heading">Contacta con nosotros!! <span class="text-muted">Estaremos encantados
                             de poder ayudarte.</span></h2>
                     <p class="lead">
-                        <br> Teléfono +34 922 10 20 30
-                        <br> <br> Móvil +34 666 333 666
-                        <br> <br> email sector7@gmail.com
+                        <br> Teléfono: +34 922 10 20 30
+                        <br> <br> Móvil: +34 666 333 666
+                        <br> <br> email: sector7@gmail.com
                     <p>
                 </div>
                 <div class="col-md-5 order-md-1">
@@ -116,16 +116,14 @@
 
             <br><br><br><br>
             <hr class="featurette-divider">
-            <br><br><br><br>
-
 
             <div class="row featurette" id="location">
                 <div class="col-md-12">
                     <h2 class="featurette-heading">Donde estamos
                     </h2>
-                    <p class="lead">Nos puedes encontrar en la C/Nuñez de la peña.</p>
+                    <p class="lead">Nos puedes encontrar en la C/Subida al Mayorazgo.</p>
                     <!--Google map-->
-
+                    <x-layout-public.googleMaps />
                     <!--Google Maps-->
                 </div>
             </div>
