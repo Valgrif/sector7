@@ -9,16 +9,18 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-secondary">INICIO</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">SERVICIOS</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">SOBRE NOSOTROS</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">CONTACTO</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">UBICACION</a></li>
+                <li><a href="#services" class="nav-link px-2 text-white">SERVICIOS</a></li>
+                <li><a href="#aboutUs" class="nav-link px-2 text-white">SOBRE NOSOTROS</a></li>
+                <li><a href="#contact" class="nav-link px-2 text-white">CONTACTO</a></li>
+                <li><a href="#location" class="nav-link px-2 text-white">UBICACION</a></li>
             </ul>
 
             <div class="text-end">
                 @guest
                     <!--Usuarios sin registrar-->
-                    <a href="{{ route('login') }}" class="btn btn-outline-light me-2">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-light me-2"><img
+                            src="{{ url('/images/circulo.png') }}" class="bd-placeholder-img rounded-circle" width="30"
+                            height="30"alt=""></a>
                 @endguest
                 @auth
                     <!--Usuarios registrados-->
@@ -29,10 +31,10 @@
                 @endauth
             </div>
             @auth
-            <div class="ms-2">
-                <a class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"><i class="bi bi-cart"></i></a>
-            </div>
+                <div class="ms-2">
+                    <a class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                        aria-controls="offcanvasRight"><i class="bi bi-cart"></i></a>
+                </div>
             @endauth
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,10 @@ use App\Http\Controllers\EventController;
 
 Route::get('/login', function () {
     return view('auth.login')->name('login');
+});
+
+Route::get('/prueba', function(){
+    return view('components.layout-user.index');
 });
 
 Route::get('/dashboard', function () {
@@ -37,3 +42,8 @@ Route::get('/', function(){
 // Rutas calendario
 
 Route::get('/event', [EventController::class, 'index']);
+
+
+// GOOGLE MAP
+
+Route::get('google-autocomplete', [GoogleController::class, 'index']);
