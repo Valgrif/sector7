@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +14,17 @@ use App\Http\Controllers\GoogleController;
 |
 */
 
-Route::get('/login', function () {
-    return view('auth.login')->name('login');
+// Ruta inicio
+
+Route::get('/', function(){
+    return view('components.layout-public.index');
 });
 
-Route::get('/prueba', function(){
-    return view('components.layout-user.index');
+
+// Rutas Login
+
+Route::get('/login', function () {
+    return view('auth.login')->name('login');
 });
 
 Route::get('/dashboard', function () {
@@ -29,18 +33,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/pruebas', function () {
-    return view('welcome');
+// Rutas User
+
+Route::get('/bienvenido', function(){
+    return view('components.layout-user.index');
 });
-
-// Ruta inicio
-
-Route::get('/', function(){
-    return view('components.layout-public.index');
-});
-
-// Rutas calendario
-
-Route::get('/event', [EventController::class, 'index']);
 
 
