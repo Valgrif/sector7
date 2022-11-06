@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\CustomerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,6 @@ use App\Http\Controllers\EventController;
 Route::get('/', function(){
     return view('components.layout-public.index');
 });
-
 
 // Rutas Login
 
@@ -39,4 +40,17 @@ Route::get('/bienvenido', function(){
     return view('components.layout-user.index');
 });
 
+// RUTAS ADMIN
 
+Route::get('/empleados', function(){
+    return view('employee.');
+});
+
+// Ruta clientes
+
+Route::get('/form', function(){
+    return view('customer.index');
+});
+
+Route::get('/form/new-customer', [CustomerController::class, 'create']);
+Route::post('/form/new-customer', [CustomerController::class, 'create'])->name('newCustomer');
