@@ -43,14 +43,14 @@
                     <img src="{{ url('/images/maintance.png') }}" class="bd-placeholder-img rounded-circle"
                         width="140" height="140" alt="...">
                     <h2>Mantenimiento</h2>
-                    <p>Con nuestro equipo, contarás con el merjor serivicio de mantenimiento y prevención sobre tus
+                    <p>Con nuestro equipo, contarás con el mejor serivicio de mantenimiento y prevención sobre tus
                         equipos informáticos.</p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <img src="{{ url('/images/repair.png') }}" class="bd-placeholder-img rounded-circle" width="140"
                         height="140" alt="...">
                     <h2>Reparación</h2>
-                    <p>Si un equipo falla dejanoslo en nuestras manos y será reparado en tiempo record</p>
+                    <p>Si un equipo falla dejalo en nuestras manos y será reparado en tiempo record</p>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
             <!-- START THE FEATURETTES -->
@@ -61,7 +61,7 @@
                     <h2 class="featurette-heading">Somos una empresa nacida en el año 2011. <br><span
                             class="text-muted">
                             Con más de 10 años de experiencia</span></h2>
-                    <p class="lead">Sector 7 nace para ofertar el mejor de los servicios de aseramiento,
+                    <p class="lead">Sector 7 nace para ofertar el mejor de los servicios de asesoramiento,
                         mantenimiento y reparacón de equipos informáticos y eletrónicos. <br><br>
                         La empresa cuenta con un equipo de ocho técnicos, todos ellos con mas de 10 años de experiencia
                         en el sector.
