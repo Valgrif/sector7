@@ -4,25 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\CustomerController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Ruta inicio
+// HOME PAGE
 
 Route::get('/', function(){
     return view('components.layout-public.index');
 });
 
-// Rutas Login
+// LOGIN
 
 Route::get('/login', function () {
     return view('auth.login')->name('login');
@@ -34,23 +22,14 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// Rutas User
+// USER INDEX
 
 Route::get('/bienvenido', function(){
     return view('components.layout-user.index');
 });
 
-// RUTAS ADMIN
 
-Route::get('/empleados', function(){
-    return view('employee.');
-});
+// EVENTS
 
-// Ruta clientes
-
-Route::get('/form', function(){
-    return view('customer.index');
-});
-
-Route::get('/form/new-customer', [CustomerController::class, 'create']);
-Route::post('/form/new-customer', [CustomerController::class, 'create'])->name('newCustomer');
+Route::get('/calendar', [EventController::class, 'index']);
+Route::post('/calendarAjax', [EventController::class, 'ajax']);
