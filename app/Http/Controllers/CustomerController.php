@@ -38,7 +38,15 @@ class CustomerController extends Controller
         return view('components.customer.customer', ["customer"=>$customer]);
     }
 
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+        return redirect()->view('components.customer.index')
+            ->with('succes', 'Cliente eliminado correctamente');
+    }
+
     public function list()
     {
+        return view('components.customer.index', ["customer" => Customer::all()]);
     }
 }

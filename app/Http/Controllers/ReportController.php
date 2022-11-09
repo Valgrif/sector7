@@ -43,7 +43,16 @@ class ReportController extends Controller
         return view('components.report.report',["report" => $report]);
     }
 
+    public function destroy(Report $report)
+    {
+        $report->delete();
+        return redirect()->view('components.report.index')
+            ->with('succes', 'Parte eliminado correctamente');
+    }
+
     public function list()
     {
+        return view('components.report.index',[ "reports" => Report::all()]);
+
     }
 }

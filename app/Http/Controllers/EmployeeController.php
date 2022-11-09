@@ -66,6 +66,10 @@ class EmployeeController extends Controller
     {
         $employee->delete();
         return redirect()->view('components.employee.index')
-            ->with('succes', 'Registro eliminado correctamente');
+            ->with('succes', 'Empleado eliminado correctamente');
+    }
+
+    public function list(){
+        return view('components.employee.index', ["employees" => Employee::all()]);
     }
 }
