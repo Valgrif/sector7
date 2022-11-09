@@ -10,14 +10,14 @@ class EventController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Event::whereDate('start', '>=', $request->start)
+            $data = Event::whereDate('start', '>=', $request->start ) //where('user_id', '=', '')
                 ->whereDate('end', '<=', $request->end)
                 ->get(['id', 'title', 'start', 'end']);
 
             return response()->json($data);
         }
 
-        return view('mycalendar');
+        return view('components.calendar.index');
     }
 
     public function ajax(Request $request)

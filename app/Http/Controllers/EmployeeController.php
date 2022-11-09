@@ -4,82 +4,68 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('components.employee.index', [ "employees" => Employee::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => "required|max:255",
+            'apellidos' => "required|max255",
+            'dni' => "required|max9",
+            'direccion' => "required|max255",
+            'email' => "required|max255",
+            'telefono' => "required|numeric|max12",
+            'foto' => "required|image",
+        ]);
+
+        $picture = $request->file('foto');
+
+        $picture_fie_name = time() . $picture->getClientOriginalName();
+        $picture->move(public_path('images'), $picture_fie_name);
+
+        $validated['foto'] = "/images/" . $picture_fie_name;
+        $validated['slug'] = Str::slug($validated['nombre'] . time());
+        Employee::create($validated);
+
+        return view('components.employee.index');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function show($slug)
     {
-        //
+        $product = Employee::where('slug', $slug)->get()->firstOrFail();
+        $related_products = $product->category->products
+            ->where('id', '!=', $product->id)
+            ->take(3);
+
+        return view('public.single-product', [
+            "product" => $product,
+            "related_products" => $related_products,
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Employee $employee)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Employee $employee)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Employee $employee)
     {
-        //
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->view('components.employee.index')
+            ->with('succes', 'Registro eliminado correctamente');
     }
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{csrf_token()}}" />
     <link rel="icon" type="image/x-icon" href="/images/circulo.png">
     <title>Sector 7</title>
     <!--Bootstrap 5 -->
@@ -16,6 +17,7 @@
     </script>
     <!--GOOGLE MAPS-->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBX-OKE8uhi81P5mPcPc4WM_80o0N2jTA&callback=initMap"></script>
+</head>
 </head>
 
 <body>

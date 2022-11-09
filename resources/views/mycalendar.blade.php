@@ -35,7 +35,7 @@
 
          var calendar = $('#calendar').fullCalendar({
                              editable: true,
-                             events: SITEURL + "/fullcalendar",
+                             events: SITEURL + "/calendar",
                              displayEventTime: false,
                              editable: true,
                              eventRender: function (event, element, view) {
@@ -52,8 +52,9 @@
                                  if (title) {
                                      var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                                      var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
+                                     console.log('title');
                                      $.ajax({
-                                         url: SITEURL + "/fullcalendarAjax",
+                                         url: SITEURL + "/calendarAjax",
                                          data: {
                                              title: title,
                                              start: start,
@@ -83,7 +84,7 @@
                                  var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
 
                                  $.ajax({
-                                     url: SITEURL + '/fullcalendarAjax',
+                                     url: SITEURL + '/calendarAjax',
                                      data: {
                                          title: event.title,
                                          start: start,
@@ -102,7 +103,7 @@
                                  if (deleteMsg) {
                                      $.ajax({
                                          type: "POST",
-                                         url: SITEURL + '/fullcalendarAjax',
+                                         url: SITEURL + '/calendarAjax',
                                          data: {
                                                  id: event.id,
                                                  type: 'delete'
