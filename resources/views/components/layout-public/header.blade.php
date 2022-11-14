@@ -13,6 +13,8 @@
                 <li><a href="#aboutUs" class="nav-link px-2 text-white">SOBRE NOSOTROS</a></li>
                 <li><a href="#contact" class="nav-link px-2 text-white">CONTACTO</a></li>
                 <li><a href="#location" class="nav-link px-2 text-white">UBICACION</a></li>
+
+
             </ul>
 
             <div class="text-end">
@@ -30,12 +32,6 @@
                     </form>
                 @endauth
             </div>
-            @auth
-                <div class="ms-2">
-                    <a class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"><i class="bi bi-cart"></i></a>
-                </div>
-            @endauth
         </div>
     </div>
 </header>

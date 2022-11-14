@@ -9,10 +9,7 @@ use Illuminate\Support\Str;
 
 class EmployeeController extends Controller
 {
-    public function index()
-    {
-        return view('components.employee.index', [ "employees" => Employee::all()]);
-    }
+
 
     public function create(Request $request)
     {

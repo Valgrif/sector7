@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('fotos');
             $table->foreignID('responsable');
             $table->string('slug')->unique();
-            $table->timestamps('fecha');
+            $table->timestamps();
         });
     }
 

@@ -26,11 +26,11 @@ class ReportController extends Controller
         ]);
 
         $picture = $request->file('fotos');
-        $picture_file_name = time() . $picture->getClientOriginalName();
+        $picture_file_name = $picture->getClientOriginalName();
         $picture->move(public_path('images/entradas'), $picture_file_name);
 
         $validated['fotos'] = "/images/entradas/" . $picture_file_name;
-        $validated['slug'] = Str::slug($validated['id'] . time());
+        $validated['slug'] = Str::slug("parte" . $validated['producto'] . time());
 
         Report::create($validated);
 
