@@ -25,11 +25,13 @@ class CustomerController extends Controller
 
         ]);
 
-        $validated['skug'] = Str::slug($validated['nombre']);
+        $validated['slug'] = Str::slug($validated['cif']);
 
         Customer::create($validated);
 
-        return view('components.customer.index');
+        //return dd($customer);
+
+        return redirect (route('list-customer'));
     }
 
     public function show($slug)
@@ -41,12 +43,12 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect()->view('components.customer.index')
+        return redirect()->view('components.customer.list')
             ->with('succes', 'Cliente eliminado correctamente');
     }
 
     public function list()
     {
-        return view('components.customer.index', ["customer" => Customer::all()]);
+        return view('components.customer.list', ["customers" => Customer::all()]);
     }
 }

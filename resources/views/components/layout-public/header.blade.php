@@ -29,7 +29,10 @@
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <input type="submit" class="btn btn-outline-light me-2" value="logout">
-                    </form>
+                        <a href="{{ route('dashboard') }}" class="btn btn-outline-light"><img
+                            src="{{ url('/images/circulo.png') }}" class="bd-placeholder-img rounded-circle" width="30"
+                            height="30"alt=""></a>
+                        </form>
                 @endauth
             </div>
         </div>

@@ -15,11 +15,11 @@ class EmployeeController extends Controller
     {
         $validated = $request->validate([
             'name' => "required|max:255",
-            'apellidos' => "required|max255",
-            'dni' => "required|max9",
-            'direccion' => "required|max255",
-            'email' => "required|max255",
-            'telefono' => "required|numeric|max12",
+            'apellidos' => "required|max:255",
+            'dni' => "required|max:9",
+            'direccion' => "required|max:255",
+            'email' => "required|max:255",
+            'telefono' => "required|numeric|max:12",
             'foto' => "required|image",
         ]);
 

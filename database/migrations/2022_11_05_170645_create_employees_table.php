@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('nombre');
             $table->string('apellidos');
-            $table->string('dni');
+            $table->string('dni')->unique();
             $table->string('dirección');
             $table->string('email');
             $table->string('telefono');
