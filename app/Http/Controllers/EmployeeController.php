@@ -14,7 +14,7 @@ class EmployeeController extends Controller
     public function create(Request $request)
     {
         $validated = $request->validate([
-            'name' => "required|max:255",
+            'nombre' => "required|max:255",
             'apellidos' => "required|max:255",
             'dni' => "required|max:9",
             'direccion' => "required|max:255",
@@ -28,11 +28,11 @@ class EmployeeController extends Controller
         $picture_fie_name = time() . $picture->getClientOriginalName();
         $picture->move(public_path('images'), $picture_fie_name);
 
-        $validated['foto'] = "/images/" . $picture_fie_name;
-        $validated['slug'] = Str::slug($validated['nombre'] . time());
+        $validated['foto'] = "/images/profile/" . $picture_fie_name;
+        $validated['slug'] = Str::slug($validated['dni']);
         Employee::create($validated);
 
-        return view('components.employee.index');
+        return redirect('/app/employee-list');
 
     }
 
@@ -49,24 +49,14 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function edit(Employee $employee)
-    {
-        //
-    }
-
-    public function update(Request $request, Employee $employee)
-    {
-
-    }
-
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return redirect()->view('components.employee.index')
+        return redirect()->view('admin.employees')
             ->with('succes', 'Empleado eliminado correctamente');
     }
 
     public function list(){
-        return view('components.employee.index', ["employees" => Employee::all()]);
+        return view('admin.employees', ["employees" => Employee::all()]);
     }
 }

@@ -20,6 +20,11 @@ class EventController extends Controller
         return view('components.calendar.index');
     }
 
+    public function list()
+    {
+        return view('admin.home', ["events" => Event::all()]);
+    }
+
     public function ajax(Request $request)
     {
 
