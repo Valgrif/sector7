@@ -22,6 +22,7 @@ class ReportController extends Controller
             'incidencia' =>"required|max:255",
             'observaciones' =>"required|max300",
             'fotos' =>"required|image",
+            'estado' =>"required",
             'responsable' =>"required|exists:employees,id",
         ]);
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('observaciones');
             $table->string('fotos');
             $table->foreignID('responsable');
+            $table->string('estado');
             $table->string('slug')->unique();
             $table->timestamps();
         });

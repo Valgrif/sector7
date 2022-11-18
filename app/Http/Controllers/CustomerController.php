@@ -52,9 +52,16 @@ class CustomerController extends Controller
         return redirect('/app/customer-list')->with('success', 'Cliente eliminado correctamente');
     }
 
+    public function destroy(Request $request)
+    {
+
+        $customer = Customer::find($request['id']);
+        $customer->delete();
+        return redirect('/app/customer-list')->with('success','Cliente eliminado');
+    }
+
     public function list()
     {
-        //return view('components.customer.list', ["customers" => Customer::all()]);
         return view('admin.customers', ["customers" => Customer::all()]);
     }
 }

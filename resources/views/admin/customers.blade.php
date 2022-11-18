@@ -60,10 +60,11 @@
                                 <a class="btn btn-primary" href="{{ route('calendar') }}">Editar</a>
                             </div>
                             <div class="col-12 col-md-1">
-                                <form action="/app/delete-customer" method="post">
+                                <form action="{{ route('delete-customer') }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="customer_id" value="{{$customer->id}}">
-                                    <input class="btn btn-danger" type="submit" value="Borrar">
+                                    <input type="hidden" value={{$customer->id}}>
+                                    <button class="btn btn-danger" type="submit">Borrar </button>
+                                    <!--<input class="btn btn-danger" type="submit" value="Borrar">-->
                                 </form>
                             </div>
                         </div>
@@ -84,8 +85,8 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="text" name="direccion" id="direccion" placeholder="Direccion"
-                            value="{{ old('direccion') }}">
+                        <input class="form-control" type="text" name="direccion" id="direccion"
+                            placeholder="Direccion" value="{{ old('direccion') }}">
                         <label for="direccion">Direccion: </label>
                     </div>
 
@@ -102,14 +103,14 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="text" name="telefono" id="telefono" placeholder="Numero de Telefono"
-                            value="{{ old('telefono') }}">
+                        <input class="form-control" type="text" name="telefono" id="telefono"
+                            placeholder="Numero de Telefono" value="{{ old('telefono') }}">
                         <label for="telefono">Teléfono: </label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input class="form-control" type="text" name="encargado" id="encargado" placeholder="Encargado"
-                            value="{{ old('encargado') }}">
+                        <input class="form-control" type="text" name="encargado" id="encargado"
+                            placeholder="Encargado" value="{{ old('encargado') }}">
                         <label for="encargado">Encargado: </label>
                     </div>
                     <button type="submit" class="btn btn-primary ms-auto">Añadir</button>

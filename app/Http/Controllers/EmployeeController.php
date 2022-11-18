@@ -13,15 +13,16 @@ class EmployeeController extends Controller
 
     public function create(Request $request)
     {
+
         $validated = $request->validate([
             'nombre' => "required|max:255",
             'apellidos' => "required|max:255",
             'dni' => "required|max:9",
             'direccion' => "required|max:255",
             'email' => "required|max:255",
-            'telefono' => "required|numeric|max:12",
-            'foto' => "required|image",
+            'telefono' => "required|numeric|digits:9",
         ]);
+
 
         $picture = $request->file('foto');
 

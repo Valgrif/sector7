@@ -149,7 +149,7 @@ class DatabaseSeeder extends Seeder
             'dni' => '33345678G',
             'direccion' => 'C/Volcan de taoro nº7',
             'email' => 'maria@sector7.com',
-            'telefono' => '666777888',
+            'telefono' => '661772898',
             'foto' => '/images/profile/tecnico2.png',
             'slug' => '33345678G'
         ]);
@@ -160,7 +160,7 @@ class DatabaseSeeder extends Seeder
             'dni' => '98773823L',
             'direccion' => 'C/ Trinidad nº3',
             'email' => 'ana@sector7.com',
-            'telefono' => '666777888',
+            'telefono' => '637747888',
             'foto' => '/images/profile/tecnico3.png',
             'slug' => '98773823L'
         ]);
