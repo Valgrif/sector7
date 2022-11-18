@@ -43,7 +43,6 @@ Route::get('/app/customers', function () {
 Route::get('/app/new-customer', [CustomerController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-customer-form');
 Route::post('/app/new-customer', [CustomerController::class, 'create'])->middleware(['auth', 'verified'])->name('create-customer');
 Route::get('/app/customer-list', [CustomerController::class, 'list'])->middleware(['auth', 'verified'])->name('list-customer');
-
 Route::post('/app/customer-list', [CustomerController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-customer');
 
 // EMPLOYEES
@@ -51,6 +50,7 @@ Route::post('/app/customer-list', [CustomerController::class, 'destroy'])->middl
 Route::get('/app/new-employee', [EmployeeController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-employee-form');
 Route::post('/app/new-employee', [EmployeeController::class, 'create'])->middleware(['auth'])->name('create-employee');
 Route::get('/app/employee-list', [EmployeeController::class, 'list'])->middleware(['auth', 'verified'])->name('list-employees');
+Route::post('/app/employee-list', [EmployeeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-employee');
 
 
 // REPORTS

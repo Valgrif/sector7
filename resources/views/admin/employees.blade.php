@@ -61,10 +61,11 @@
                                 <a class="btn btn-primary" href="{{ route('calendar') }}">Editar</a>
                             </div>
                             <div class="col-12 col-md-1">
-                                <form action="/app/delete-employee" method="post">
+                                <form action="{{ route('delete-employee') }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="employee_id" value="{{$employee->id}}">
-                                    <input class="btn btn-danger" type="submit" value="Borrar">
+                                    <input type="hidden" name="id" value={{$employee->id}}>
+                                    <button class="btn btn-danger" type="submit">Borrar </button>
+                                    <!--<input class="btn btn-danger" type="submit" value="Borrar">-->
                                 </form>
                             </div>
                         </div>

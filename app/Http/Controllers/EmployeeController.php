@@ -50,11 +50,11 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function destroy(Employee $employee)
+    public function destroy(Request $request)
     {
-        $employee->delete();
-        return redirect()->view('admin.employees')
-            ->with('succes', 'Empleado eliminado correctamente');
+        $customer = Employee::findOrFail($request['id']);
+        $customer->delete();
+        return redirect('/app/employee-list')->with('success','Cliente eliminado');
     }
 
     public function list(){

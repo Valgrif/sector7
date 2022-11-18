@@ -54,8 +54,7 @@ class CustomerController extends Controller
 
     public function destroy(Request $request)
     {
-
-        $customer = Customer::find($request['id']);
+        $customer = Customer::findOrFail($request['id']);
         $customer->delete();
         return redirect('/app/customer-list')->with('success','Cliente eliminado');
     }

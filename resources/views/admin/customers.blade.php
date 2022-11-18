@@ -62,7 +62,7 @@
                             <div class="col-12 col-md-1">
                                 <form action="{{ route('delete-customer') }}" method="post">
                                     @csrf
-                                    <input type="hidden" value={{$customer->id}}>
+                                    <input type="hidden" name="id" value={{$customer->id}}>
                                     <button class="btn btn-danger" type="submit">Borrar </button>
                                     <!--<input class="btn btn-danger" type="submit" value="Borrar">-->
                                 </form>
