@@ -27,7 +27,7 @@ class EmployeeController extends Controller
         $picture = $request->file('foto');
 
         $picture_fie_name = time() . $picture->getClientOriginalName();
-        $picture->move(public_path('images'), $picture_fie_name);
+        $picture->move(public_path('images/profile/'), $picture_fie_name);
 
         $validated['foto'] = "/images/profile/" . $picture_fie_name;
         $validated['slug'] = Str::slug($validated['dni']);
