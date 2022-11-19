@@ -17,7 +17,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('customer-index') }}" class="nav-link align-middle px-0 text-white">
+                <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0 text-white">
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Partes</span>
                 </a>
             </li>
