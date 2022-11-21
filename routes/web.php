@@ -55,7 +55,7 @@ Route::post('/app/employee-list', [EmployeeController::class, 'destroy'])->middl
 
 // REPORTS
 
-Route::get('/app/new-report', [ReportController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-report-form');
+Route::get('/app/new-report', [ReportController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-report');
 Route::post('/app/new-report', [ReportController::class, 'create'])->middleware(['auth', 'verified'])->name('create-report');
 Route::get('/app/report-list', [ReportController::class, 'list'])->middleware(['auth', 'verified'])->name('list-report');
 

@@ -11,7 +11,7 @@ class ReportController extends Controller
 {
     public function new_form()
     {
-        return view('components.report.create');
+        return view('admin.report');
     }
 
     public function create(Request $request)
@@ -33,27 +33,30 @@ class ReportController extends Controller
         $validated['fotos'] = "/images/entradas/" . $picture_file_name;
         $validated['slug'] = Str::slug("parte" . $validated['producto'] . time());
 
+        $responsable = $request->input('responsable');
+        $responsable->
+
         Report::create($validated);
 
-        return view('components.report.index');
+        return view('admin.report');
     }
 
     public function show($slug)
     {
         $report = Report::where('slug', $slug)->get()->firstOrfail();
-        return view('components.report.report',["report" => $report]);
+        return view('admin',["report" => $report]);
     }
 
-    public function destroy(Report $report)
+    public function destroy(Request $request)
     {
-        $report->delete();
-        return redirect()->view('components.report.index')
-            ->with('succes', 'Parte eliminado correctamente');
+        $customer = Report::findOrFail($request['id']);
+        $customer->delete();
+        return redirect('/app/report-list')->with('success','Parte eliminado');
     }
 
     public function list()
     {
-        return view('components.report.index',[ "reports" => Report::all()]);
+        return view('admin.report',[ "reports" => Report::all()]);
 
     }
 }

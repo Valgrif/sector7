@@ -4,5 +4,6 @@
         <h1>Bienvenido {{ auth()->user()->name }}</h1>
         <p> Hoy es {{ now()->toDateString() }}</p>
         <p>Tienes X partes pendientes</p>
+
     </div>
 </x-layout-user>
