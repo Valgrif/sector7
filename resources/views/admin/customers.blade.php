@@ -1,6 +1,6 @@
 <x-layout-user>
 
-    <!-- PESTAÑAS -->
+    <?php //-- PESTAÑAS -->?>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link <?php echo $errors->any() ? "" : "active"?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
@@ -16,10 +16,10 @@
         </li>
     </ul>
 
-    <!-- CONTENIDO PESTAÑAS -->
+    <?php //-- CONTENIDO PESTAÑAS --> ?>
     <div class="tab-content" id="myTabContent">
 
-        <!-- LISTA CLIENTES -->
+        <?php //-- LISTA CLIENTES --> ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? "" : "show active"?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="container m-4">
                 <div class="container mb-3">
@@ -57,14 +57,14 @@
                                 {{ $customer->mail }}
                             </div>
                             <div class="col-12 col-md-1">
-                                <a class="btn btn-primary" href="{{ route('calendar') }}">Editar</a>
+                                <a class="btn btn-primary" href="{{ route('edit-customer', $customer->id) }}">
+                                    Editar</a>
                             </div>
                             <div class="col-12 col-md-1">
                                 <form action="{{ route('delete-customer') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="id" value={{$customer->id}}>
                                     <button class="btn btn-danger" type="submit">Borrar </button>
-                                    <!--<input class="btn btn-danger" type="submit" value="Borrar">-->
                                 </form>
                             </div>
                         </div>
@@ -73,9 +73,17 @@
             </div>
         </div>
 
-        <!-- NUEVO REGISTRO -->
+        <?php //-- NUEVO REGISTRO --> ?>
         <div class="tab-pane fade <?php echo $errors->any() ? " show active" : ""?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container m-4">
+                <div class="container-fluid ml-2">
+                    <div>
+                        <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                        </ul>
+                    </div>
                 <form action="{{ route('create-customer') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-floating mb-3">

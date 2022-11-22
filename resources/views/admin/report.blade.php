@@ -1,5 +1,5 @@
 <x-layout-user>
-    <!-- PESTAÑAS -->
+    <?php //--------------------------------------------------------- PESTAÑAS ------------------------------->?>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link <?php echo $errors->any() ? '' : 'active'; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -15,10 +15,10 @@
         </li>
     </ul>
 
-    <!-- CONTENIDO PESTAÑAS -->
+    <?php //-------------------------------------------- CONTENIDO PESTAÑAS -------------------------------------> ?>
     <div class="tab-content" id="myTabContent">
 
-        <!-- LISTA CLIENTES -->
+        <?php //-- LISTA CLIENTES --> ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="container m-4">
                 <div class="container mb-3">
@@ -59,11 +59,10 @@
                                 <a class="btn btn-primary" href="{{ route('calendar') }}">Editar</a>
                             </div>
                             <div class="col-12 col-md-1">
-                                <form action="{{ route('delete-customer') }}" method="post">
+                                <form action="{{ route('delete-report') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="id" value={{ $customer->id }}>
                                     <button class="btn btn-danger" type="submit">Borrar </button>
-                                    <!--<input class="btn btn-danger" type="submit" value="Borrar">-->
                                 </form>
                             </div>
                         </div>
@@ -72,7 +71,7 @@
             </div>
         </div>
 
-        <!-- NUEVO REGISTRO -->
+        <?php //-- NUEVO REGISTRO --> ?>
         <div class="tab-pane fade <?php echo $errors->any() ? ' show active' : ''; ?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container m-4">
                 <form action="{{ route('new-report') }}" method="post" enctype="multipart/form-data">
@@ -112,7 +111,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <select name="encargado" id="encargado" class="form-select">
+                        <select name="responsable" id="responsable" class="form-select">
                             <option value=""> Técnico responsable </option>
                             @foreach ($employees as $employee)
                             <option value="{{ $employee->id }}"{{ $employee->id == old('encargado') ? 'selected' : '' }}>
@@ -133,7 +132,7 @@
             </div>
         </div>
 
-        <!-- BUSCAR -->
+        <?php //-- BUSCAR --> ?>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             12
         </div>

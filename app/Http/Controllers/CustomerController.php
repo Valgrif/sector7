@@ -29,10 +29,6 @@ class CustomerController extends Controller
 
         Customer::create($validated);
 
-
-        //return dd($customer);
-
-        //return redirect (route('list-customer'));
         return redirect('/app/customer-list');
     }
 
@@ -42,25 +38,40 @@ class CustomerController extends Controller
         return view('components.customer.customer', ["customer"=>$customer]);
     }
 
-    public function delete(Request $request)
+    public function list()
     {
-        $id = $request->input('customer_id');
-        $customer = Customer::findOrFail($id);
-        if($customer->user == auth()->user()){
-            $customer->delete();
-        }
-        return redirect('/app/customer-list')->with('success', 'Cliente eliminado correctamente');
+        return view('admin.customers', ["customers" => Customer::all()]);
+    }
+
+    public function edit(Request $request, Customer $customer)
+    {
+        return view('admin.edit-customer', ['customer' => $customer]);
+    }
+
+    public function update(Request $request, Customer $customer)
+    {
+        $validated = $request->validate([
+            'nombre' => "required|max:255",
+            'direccion' => "required|max:255",
+            'cif' => "required|min:9|max:9",
+            'mail' => "required|max:100",
+            'telefono' => "required|max:9",
+            'encargado' => "required|max:100",
+
+        ]);
+
+        $validated['slug'] = Str::slug($validated['cif']);
+
+        $customer->update($validated);
+
+        return redirect('/app/customer-list');
+
     }
 
     public function destroy(Request $request)
     {
         $customer = Customer::findOrFail($request['id']);
         $customer->delete();
-        return redirect('/app/customer-list')->with('success','Cliente eliminado');
-    }
-
-    public function list()
-    {
-        return view('admin.customers', ["customers" => Customer::all()]);
+        return redirect('app/customer-list')->with('success','Empleado eliminado');
     }
 }

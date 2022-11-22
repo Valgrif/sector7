@@ -22,7 +22,8 @@ class EventController extends Controller
 
     public function list()
     {
-        return view('admin.home', ["events" => Event::all()]);
+        $events = Event::all();
+        return view('components.layout-user.event', ["events" => $events]);
     }
 
     public function ajax(Request $request)

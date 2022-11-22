@@ -42,19 +42,19 @@
                     </div>
                     <hr>
 
-                    @foreach ($users as $user)
+                    @foreach ($employees as $employee)
                         <div class="row mb-2">
                             <div class="col-12 col-md-3">
-                                {{ $user->name }}
+                                {{ $employee->nombre }}
                             </div>
                             <div class="col-12 col-md-2">
-                                {{ $user->apellidos }}
+                                {{ $employee->apellidos }}
                             </div>
                             <div class="col-12 col-md-2">
-                                {{ $user->telefono }}
+                                {{ $employee->telefono }}
                             </div>
                             <div class="col-12 col-md-3">
-                                {{ $user->email }}
+                                {{ $employee->email }}
                             </div>
                             <div class="col-12 col-md-1">
                                 <a class="btn btn-primary" href="{{ route('calendar') }}">Editar</a>
@@ -62,7 +62,7 @@
                             <div class="col-12 col-md-1">
                                 <form action="{{ route('delete-employee') }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="id" value={{$user->id}}>
+                                    <input type="hidden" name="id" value={{$employee->id}}>
                                     <button class="btn btn-danger" type="submit">Borrar </button>
                                 </form>
                             </div>
@@ -90,7 +90,7 @@
                         @csrf
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="text" name="name" id="name" placeholder="Nombre"
+                            <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre"
                                 value="{{ old('nombre') }}">
                             <label for="nombre">Nombre: </label>
                         </div>
@@ -99,19 +99,6 @@
                             <input class="form-control" type="text" name="apellidos" id="apellidos" placeholder="Apellidos"
                                 value="{{ old('apellidos') }}">
                             <label for="apellidos">Apellidos: </label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="password" name="password" id="password" placeholder="Password"
-                                value="{{ old('password') }}">
-                            <label for="password">Password: </label>
-                        </div>
-
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Debe ser la misma"
-                                value="{{ old('password_confirmation') }}">
-                            <label for="password_confirmation">Password: </label>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -156,4 +143,5 @@
             12
         </div>
     </div>
+
 </x-layout-user>

@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Marcos',
             'email' => 'admin@sector7.com',
             'role' => 'admin',
+            'apellidos' => 'Garcia',
+            'telefono' => '663445667',
+            'direccion' => 'c/ falsa 2',
+            'dni' => '11122233K',
             'foto' => '/images/profile/admin.png'
 
         ]);
@@ -28,7 +32,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Daniel',
             'email' => 'dani@sector7.com',
-            'role' => 'tecnico',
+            'role' => 'Tecnico',
+            'apellidos' => 'Hernandez',
+            'telefono' => '663335667',
+            'direccion' => 'c/ falsa 4',
+            'dni' => '11189233K',
             'foto' => '/images/profile/tecnico1.png'
 
         ]);
@@ -36,7 +44,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Maria',
             'email' => 'maria@sector7.com',
-            'role' => 'tecnico',
+            'role' => 'Tecnico',
+            'apellidos' => 'Alvarez',
+            'telefono' => '633435367',
+            'direccion' => 'c/ falsa 15',
+            'dni' => '44122233G',
             'foto' => '/images/profile/tecnico2.png'
 
         ]);
@@ -44,7 +56,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Ana',
             'email' => 'ana@sector7.com',
-            'role' => 'tecnico',
+            'role' => 'Tecnico',
+            'apellidos' => 'Martinez',
+            'telefono' => '663445667',
+            'direccion' => 'c/ falsa 2',
+            'dni' => '12322233K',
             'foto' => '/images/profile/tecnico3.png'
 
         ]);
