@@ -1,8 +1,10 @@
 <x-layout-user>
-    <div class="container">
+
         <div class="container m-4">
             <div class="container-fluid ml-2">
                 <x-layout-user.errors />
+
+
             <form action="{{ route('update-customer', $customer->id) }}" method="post" enctype="multipart/form-data">
                 @csrf @method('patch')
                 <div class="form-floating mb-1">
@@ -41,8 +43,8 @@
                     <label for="encargado">Encargado: </label>
                 </div>
                 <button type="submit" class="btn btn-primary ms-auto">Actualizar</button>
+                <a  class="btn btn-danger" href="/app/customer-list"><i class="bi bi-x-circle-fill"></i></a>
 
             </form>
         </div>
-    </div>
 </x-layout-user>

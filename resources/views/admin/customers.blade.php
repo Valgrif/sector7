@@ -24,7 +24,7 @@
         <?php //-- LISTA CLIENTES -->
         ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="table-responsive rounded-3">
+            <div class="table-responsive-sm m-4">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -37,22 +37,20 @@
                     </thead>
                     <tbody>
                         @foreach ($customers as $customer)
-                            <tr onclick="window.location='{{route('show-customer', $customer->slug)}}'">
+                            <tr class=""
+                                onclick="window.location='{{ route('show-customer', $customer->slug) }}'">
                                 <th scope="row">{{ $customer->nombre }}</th>
                                 <th>{{ $customer->encargado }}</th>
                                 <th>{{ $customer->telefono }}</th>
                                 <th>{{ $customer->mail }}</th>
                                 <th>
-                                    <a class="btn btn-primary" href="{{ route('edit-customer', $customer->id) }}">
-                                        <i class="bi bi-pencil"></i></a>
-                                    <a class="btn btn-danger" href="">
-                                        <i class="bi bi-trash3-fill"></i></a>
-                                </th>
-                                <th>
                                     <form action="{{ route('delete-customer') }}" method="post">
                                         @csrf
+                                        <a class="btn btn-primary" href="{{ route('edit-customer', $customer->id) }}">
+                                        <i class="bi bi-pencil"></i></a>
                                         <input type="hidden" name="id" value={{ $customer->id }}>
-                                        <button type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                        <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>
+                                        </button>
                                     </form>
                                 </th>
                             </tr>
@@ -68,9 +66,7 @@
         <div class="tab-pane fade <?php echo $errors->any() ? ' show active' : ''; ?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container m-4">
                 <div class="container-fluid ml-2">
-                    <div>
-                        <x-layout-user.errors />
-                    </div>
+                    <x-layout-user.errors />
                     <form action="{{ route('create-customer') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-floating mb-3">

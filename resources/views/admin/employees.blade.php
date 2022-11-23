@@ -1,10 +1,9 @@
 <x-layout-user>
-
-    <!-- PESTAÑAS -->
+   <?php  //-- PESTAÑAS --> ?>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link <?php echo $errors->any() ? "" : "active"?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true">Clientes</button>
+                role="tab" aria-controls="home" aria-selected="true">Empleados</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link <?php echo $errors->any() ? "active" : ""?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
@@ -78,14 +77,7 @@
         <div class="tab-pane fade <?php echo $errors->any() ? " show active" : ""?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container m-4">
                 <div class="container-fluid ml-2">
-                    <div>
-                        <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
-                        @endforeach
-                        </ul>
-                    </div>
-
+                    <x-layout-user.errors />
                     <form action="{{ route('create-employee') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
