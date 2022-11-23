@@ -41,6 +41,7 @@ Route::get('/app/home', [EventController::class, 'list'])->middleware(['auth', '
 
 Route::get('/app/new-customer', [CustomerController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-customer-form');
 Route::post('/app/new-customer', [CustomerController::class, 'create'])->middleware(['auth', 'verified'])->name('create-customer');
+Route::get('/app/customer/{slug}', [CustomerController::class, 'show'])->middleware(['auth', 'verified'])->name('show-customer');
 
 Route::get('/app/customer-list', [CustomerController::class, 'list'])->middleware(['auth', 'verified'])->name('list-customer');
 

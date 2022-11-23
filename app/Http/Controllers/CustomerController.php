@@ -32,12 +32,6 @@ class CustomerController extends Controller
         return redirect('/app/customer-list');
     }
 
-    public function show($slug)
-    {
-        $customer = Customer::where('slug', $slug)->get()->firstOrfail();
-        return view('components.customer.customer', ["customer"=>$customer]);
-    }
-
     public function list()
     {
         return view('admin.customers', ["customers" => Customer::all()]);
@@ -72,6 +66,13 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($request['id']);
         $customer->delete();
-        return redirect('app/customer-list')->with('success','Empleado eliminado');
+        return redirect('app/customer-list');
+    }
+
+    public function show ($slug)
+    {
+        $customer = Customer::where('slug', $slug)->get()->firstOrFail();
+        return view('admin.single-customer', ["customer" => $customer]);
     }
 }
+
