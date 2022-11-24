@@ -133,52 +133,5 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-
-
-        // -------------EMPLOYEES ---------------------------- //
-
-        \App\Models\Employee::factory()->create([
-            'nombre' => 'Marcos',
-            'apellidos' => 'Garcia Felipe',
-            'dni' => '12345678K',
-            'direccion' => 'C/Clemencia Hardisson nº2',
-            'email' => 'marcos@sector7.com',
-            'telefono' => '639489789',
-            'foto' => '/images/profile/admin.png',
-            'slug' => '12345678K'
-        ]);
-
-        \App\Models\Employee::factory()->create([
-            'nombre' => 'Daniel',
-            'apellidos' => 'Gutierrez Hernandez',
-            'dni' => '22245678L',
-            'direccion' => 'C/Herbasio nº3',
-            'email' => 'dani@sector7.com',
-            'telefono' => '666777888',
-            'foto' => '/images/profile/tecnico1.png',
-            'slug' => '22245678L'
-        ]);
-
-        \App\Models\Employee::factory()->create([
-            'nombre' => 'Maria',
-            'apellidos' => 'Velazco Martin',
-            'dni' => '33345678G',
-            'direccion' => 'C/Volcan de taoro nº7',
-            'email' => 'maria@sector7.com',
-            'telefono' => '661772898',
-            'foto' => '/images/profile/tecnico2.png',
-            'slug' => '33345678G'
-        ]);
-
-        \App\Models\Employee::factory()->create([
-            'nombre' => 'Ana',
-            'apellidos' => 'Hernandez Guzman',
-            'dni' => '98773823L',
-            'direccion' => 'C/ Trinidad nº3',
-            'email' => 'ana@sector7.com',
-            'telefono' => '637747888',
-            'foto' => '/images/profile/tecnico3.png',
-            'slug' => '98773823L'
-        ]);
     }
 }

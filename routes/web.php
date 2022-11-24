@@ -23,9 +23,9 @@ Route::get('/login', function () {
     )->name('login');
 });
 
-Route::get('/app', function () {
-    return view('admin.home'); // Pagina de inicio de sesion
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/app', [EventController::class, 'listHome'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 require __DIR__ . '/auth.php';
 
@@ -62,8 +62,8 @@ Route::patch('/app/{user}/update', [RegisteredUserController::class, 'update'])-
 
 //---------- REPORT -------------------------------------------------------------------------------------------------------//
 
-Route::get('/app/new-report', [ReportController::class, 'create'])->middleware(['auth', 'verified'])->name('new-report');
-Route::post('/app/new-report', [ReportController::class, 'store'])->middleware(['auth'])->name('create-report');
+Route::get('/app/new-report', [ReportController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-report');
+Route::post('/app/new-report', [ReportController::class, 'create'])->middleware(['auth'])->name('create-report');
 Route::get('/app/report-list', [ReportController::class, 'list'])->middleware(['auth', 'verified'])->name('list-report');
 Route::post('/app/report-list', [ReportController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-report');
 

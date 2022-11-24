@@ -61,4 +61,10 @@ class EventController extends Controller
              break;
         }
     }
+
+    public function listHome()
+    {
+        $events = Event::all();
+        return view('admin.home', ["events" => $events]);
+    }
 }

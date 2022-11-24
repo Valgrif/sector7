@@ -48,13 +48,12 @@
                     </thead>
                     <tbody>
                         @foreach ($customers as $customer)
-                            <tr class=""
-                                onclick="window.location='{{ route('show-customer', $customer->slug) }}'">
-                                <th scope="row">{{ $customer->nombre }}</th>
-                                <th>{{ $customer->encargado }}</th>
-                                <th>{{ $customer->telefono }}</th>
-                                <th>{{ $customer->mail }}</th>
-                                <th>
+                            <tr onclick="window.location='{{ route('show-customer', $customer->slug) }}'">
+                                <td scope="row">{{ $customer->nombre }}</td>
+                                <td>{{ $customer->encargado }}</td>
+                                <td>{{ $customer->telefono }}</td>
+                                <td>{{ $customer->mail }}</td>
+                                <td>
                                     <form action="{{ route('delete-customer') }}" method="post">
                                         @csrf
                                         <a class="btn btn-primary" href="{{ route('edit-customer', $customer->id) }}">
@@ -63,7 +62,7 @@
                                         <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>
                                         </button>
                                     </form>
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

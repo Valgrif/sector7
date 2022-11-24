@@ -40,7 +40,7 @@ class ReportController extends Controller
 
         Report::create($validated);
 
-        return view('admin.report');
+        return redirect('/app/report-list');
     }
 
     public function show($slug)
@@ -52,7 +52,18 @@ class ReportController extends Controller
 
     public function list()
     {
-        return view('admin.report',[ "reports" => Report::all()]);
+        return view('admin.report',[
+            "reports" => Report::all(),
+            "employees" => User::all(),
+            "customers" => Customer::all(),
+        ]);
 
+    }
+
+    public function destroy(Request $request)
+    {
+        $report = Report::findOrFail($request['id']);
+        $report->delete();
+        return redirect('app/report-list');
     }
 }

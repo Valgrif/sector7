@@ -5,6 +5,7 @@
         <p> Hoy es {{ now()->toDateString() }}</p>
         <p>Tienes X partes pendientes</p>
 
+        <x-layout-user.event :events="$events"/>
 
     </div>
 </x-layout-user>
