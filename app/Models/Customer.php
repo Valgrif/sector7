@@ -11,7 +11,7 @@ class Customer extends Model
 
     protected $guarded = [];
 
-    public function reports(){
-        return $this->belongsToMany(Report::class);
+    public function reports() {
+        return $this->hasMany(Report::class);
     }
 }

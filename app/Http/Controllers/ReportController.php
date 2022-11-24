@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Employee;
-use League\Flysystem\UrlGeneration\PublicUrlGenerator;
 
 class ReportController extends Controller
 {
     public function new_form()
     {
-        return view('admin.report', ["employees" => Employee::all()]);
+        return view('admin.report', [
+            "employees" => User::all(),
+            "customers" => Customer::all(),
+        ]);
     }
 
     public function create(Request $request)

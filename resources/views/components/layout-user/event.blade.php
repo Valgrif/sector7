@@ -1,3 +1,4 @@
+@props()
 @foreach ($events as $event)
     @if ($event->end == now()->toDateString())
         <div class="row mb-2">

@@ -1,7 +1,7 @@
 <x-layout-user>
 
-    <?php //-- PESTAÑAS -->
-    ?>
+    <?php //-- PESTAÑAS -->?>
+
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link <?php echo $errors->any() ? '' : 'active'; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -11,20 +11,31 @@
             <button class="nav-link <?php echo $errors->any() ? 'active' : ''; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                 type="button" role="tab" aria-controls="profile" aria-selected="false">Añadir</button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                role="tab" aria-controls="contact" aria-selected="false">Buscar</button>
-        </li>
     </ul>
 
-    <?php //-- CONTENIDO PESTAÑAS -->
-    ?>
+    <?php //-- CONTENIDO PESTAÑAS -- ?>
+
     <div class="tab-content" id="myTabContent">
 
         <?php //-- LISTA CLIENTES -->
         ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="table-responsive-sm m-4">
+                <form action="{{route('list-customer')}}" method="get">
+                    <div class="col-x1-12">
+                        <form action="">
+                            <div class="form-now">
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="texto" id="">
+                                </div>
+                                <div class="col-auto">
+                                   <input type="submit" class="btn btn-primary" value="Buscar">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </form>
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -47,7 +58,7 @@
                                     <form action="{{ route('delete-customer') }}" method="post">
                                         @csrf
                                         <a class="btn btn-primary" href="{{ route('edit-customer', $customer->id) }}">
-                                        <i class="bi bi-pencil"></i></a>
+                                            <i class="bi bi-pencil"></i></a>
                                         <input type="hidden" name="id" value={{ $customer->id }}>
                                         <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>
                                         </button>
@@ -67,6 +78,7 @@
             <div class="container m-4">
                 <div class="container-fluid ml-2">
                     <x-layout-user.errors />
+
                     <form action="{{ route('create-customer') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-floating mb-3">
@@ -110,10 +122,7 @@
                 </div>
             </div>
 
-            <!-- BUSCAR -->
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                12
-            </div>
+
         </div>
 
 </x-layout-user>

@@ -12,10 +12,10 @@ class Report extends Model
     protected $guarded = [];
 
     public function employee(){
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function customer(){
+    public function customers(){
         return $this->belongsTo(Custmer::class);
     }
 }
