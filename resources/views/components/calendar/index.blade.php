@@ -1,5 +1,5 @@
 <x-layout-user>
-	<div class="container py-4">
+	<div class="container-sm">
         <div id='calendar'></div>
    </div>
      <script>

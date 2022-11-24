@@ -1,5 +1,5 @@
 <x-layout-user>
-    <?php //-- PESTAÑAS -->
+    <?php //------------------------------------------------------ PESTAÑAS //------------------------------------------------------>
     ?>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -10,17 +10,13 @@
             <button class="nav-link <?php echo $errors->any() ? 'active' : ''; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                 type="button" role="tab" aria-controls="profile" aria-selected="false">Añadir</button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                role="tab" aria-controls="contact" aria-selected="false">Buscar</button>
-        </li>
     </ul>
 
-    <?php //-- CONTENIDO PESTAÑAS -->
+    <?php //------------------------------------------------------CONTENIDO PESTAÑAS //------------------------------------------------------>
     ?>
     <div class="tab-content" id="myTabContent">
 
-        <?php //-- LISTA PARTES -->
+        <?php  //------------------------------------------------------LISTA PARTES //------------------------------------------------------>
         ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="table-responsive-sm m-4">
@@ -60,7 +56,7 @@
 
         </div>
 
-        <?php //-- NUEVO REGISTRO -->
+        <?php //------------------------------------------------------ NUEVO REGISTRO //------------------------------------------------------>
         ?>
         <div class="tab-pane fade <?php echo $errors->any() ? ' show active' : ''; ?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container m-4">
@@ -69,32 +65,18 @@
                     <form action="{{ route('create-report') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-floating mb-3">
-                            <span class="input-group-text">Categoría</span>
                             <select name="customer_id" id="customer_id" class="form-select">
-                                <option value="">--- Slecciona una Empresa ---</option>
+                                <option value="">--- Cliente ---</option>
                                 @foreach ($customers as $customer)
                                     <option value="{{ $customer->id }}"{{$customer->id == old('customer_id') ? "selected" : ""}}>
-                                        {{ $customer->name }}
+                                        {{ $customer->nombre }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="text" name="producto" id="producto"
-                                placeholder="Producto" value="{{ old('producto') }}">
-                            <label for="Producto">Producto: </label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input class="form-control" type="text" name="observaciones" id="observaciones"
-                                placeholder="La letra del CIF en mayusculas" value="{{ old('observaciones') }}">
-                            <label for="observaciones">Observaciones: </label>
-                        </div>
-
                         <div class="form-floating mb-3">
                             <select name="responsable" id="responsable" class="form-select">
-                                <option value="">--- Slecciona unn Técnico ---</option>
+                                <option value="">--- Técnico encargado ---</option>
                                 @foreach ($employees as $employee)
                                     <option value="{{ $employee->id }}"{{$employee->id == old('responsable') ? "selected" : ""}}>
                                         {{ $employee->name }}
@@ -102,28 +84,35 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" name="producto" id="producto"
+                                placeholder="Producto" value="{{ old('producto') }}">
+                            <label for="Producto">Producto: </label>
+                        </div>
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="text" name="telefono" id="telefono"
-                                placeholder="Numero de Telefono" value="{{ old('telefono') }}">
+                            <input class="form-control" type="text" name="incidencia" id="incidencia"
+                                placeholder="Describe el problema" value="{{ old('incidencia') }}">
+                            <label for="incidencia">Incidencia: </label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" name="observaciones" id="observaciones"
+                                placeholder="Observaciones de entrada" value="{{ old('observaciones') }}">
                             <label for="telefono">Teléfono: </label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" type="text" name="encargado" id="encargado"
-                                placeholder="Encargado" value="{{ old('encargado') }}">
-                            <label for="encargado">Encargado: </label>
+                            <select name="estado" id="estado" class="form-select">
+                                <option value="">En cola</option>
+                                <option value=""></option>
+
+                            </select>
                         </div>
+
                         <button type="submit" class="btn btn-primary ms-auto">Añadir</button>
 
                     </form>
                 </div>
             </div>
-
-            <!-- BUSCAR -->
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                12
-            </div>
-        </div>
-
 </x-layout-user>

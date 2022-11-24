@@ -118,7 +118,13 @@ class RegisteredUserController extends Controller
     {
         $employee = User::findOrFail($request['id']);
         $employee->delete();
-        return redirect('/app/employee-list')->with('success','Empleado eliminado');
+        return redirect('/app/employee-list');
+    }
+
+    public function show ($dni)
+    {
+        $employee = User::where('slug', $dni)->get()->firstOrFail();
+        return view('admin.profile', ["employee" => $employee]);
     }
 
 

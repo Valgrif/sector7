@@ -57,8 +57,11 @@ Route::get('/app/new-employee', [RegisteredUserController::class, 'create'])->mi
 Route::post('/app/new-employee', [RegisteredUserController::class, 'store'])->middleware(['auth'])->name('create-employee');
 Route::get('/app/employee-list', [RegisteredUserController::class, 'list'])->middleware(['auth', 'verified'])->name('list-employees');
 Route::post('/app/employee-list', [RegisteredUserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-employee');
+Route::get('/app/employee/{dni}', [RegisteredUserController::class, 'show'])->middleware(['auth', 'verified'])->name('show-employee');
+
 Route::get('/app/{user}/edit', [RegisteredUserController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-employee');
-Route::patch('/app/{user}/update', [RegisteredUserController::class, 'update'])->middleware(['auth', 'verified'])->name('update-employee');
+
+
 
 //---------- REPORT -------------------------------------------------------------------------------------------------------//
 
@@ -66,6 +69,7 @@ Route::get('/app/new-report', [ReportController::class, 'new_form'])->middleware
 Route::post('/app/new-report', [ReportController::class, 'create'])->middleware(['auth'])->name('create-report');
 Route::get('/app/report-list', [ReportController::class, 'list'])->middleware(['auth', 'verified'])->name('list-report');
 Route::post('/app/report-list', [ReportController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-report');
+
 
 
 
