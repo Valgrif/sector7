@@ -22,13 +22,13 @@ class ReportController extends Controller
     {
 
         $validated = $request->validate([
-            'customer_id' => "required|exists:customer,id",
+            'customer_id' => "required|exists:customers,id",
             'producto' => "required|",
             'incidencia' =>"required|max:255",
-            'observaciones' =>"required|max300",
-            'fotos' =>"required|image",
+            'observaciones' =>"required|max:300",
+            'fotos' =>"image",
             'estado' =>"required",
-            'responsable' =>"required|exists:employees,id",
+            'responsable' =>"required|exists:users,id",
         ]);
 
         $picture = $request->file('fotos');
@@ -36,19 +36,12 @@ class ReportController extends Controller
         $picture->move(public_path('images/entradas'), $picture_file_name);
 
         $validated['fotos'] = "/images/entradas/" . $picture_file_name;
-        $validated['slug'] = Str::slug("parte" . $validated['producto'] . time());
+        $validated['slug'] = Str::slug($validated['producto']);
 
         Report::create($validated);
 
         return redirect('/app/report-list');
     }
-
-    public function show($slug)
-    {
-        $report = Report::where('slug', $slug)->get()->firstOrfail();
-        return view('admin',["report" => $report]);
-    }
-
 
     public function list()
     {
@@ -66,4 +59,33 @@ class ReportController extends Controller
         $report->delete();
         return redirect('app/report-list');
     }
+
+    public function edit(Request $request, Report $report)
+    {
+        return view('admin.edit-report', ['report' => $report]);
+    }
+
+    public function update(Request $request, Report $report)
+    {
+        $validated = $request->validate([
+            'customer_id' => "required|exists:customers,id",
+            'producto' => "required|",
+            'incidencia' =>"required|max:255",
+            'observaciones' =>"required|max:300",
+            'estado' =>"required",
+            'responsable' =>"required|exists:users,id",
+        ]);
+
+        $report->update($validated);
+
+        return redirect('/app/report-list');
+
+    }
+
+    public function show ($slug)
+    {
+        $report = Report::where('slug', $slug)->get()->firstOrFail();
+        return view('admin.single-report', ["report" => $report]);
+    }
+
 }

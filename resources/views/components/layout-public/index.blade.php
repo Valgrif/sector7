@@ -27,8 +27,9 @@
             </button>
         </div>
         <br>
+
+        <?php //----- SERVICIOS -----> ?>
         <div class="container marketing">
-            <!-- Three columns of text below the carousel -->
             <div class="row" id="services">
                 <div class="col-lg-4">
                     <img src="{{ url('/images/asesoramiento.png') }}" class="bd-placeholder-img rounded-circle"
@@ -36,23 +37,24 @@
                     <h2>Aseroramiento</h2>
                     <p>Realizamos estudios ténicos sobre las necesidades de tu empresa, ofreciendote así el mejor de los
                         equipos informáticos para tu trabajo.</p>
-                </div><!-- /.col-lg-4 -->
+                </div>
                 <div class="col-lg-4">
                     <img src="{{ url('/images/maintance.png') }}" class="bd-placeholder-img rounded-circle"
                         width="140" height="140" alt="...">
                     <h2>Mantenimiento</h2>
                     <p>Con nuestro equipo, contarás con el mejor serivicio de mantenimiento y prevención sobre tus
                         equipos informáticos.</p>
-                </div><!-- /.col-lg-4 -->
+                </div>
                 <div class="col-lg-4">
                     <img src="{{ url('/images/repair.png') }}" class="bd-placeholder-img rounded-circle" width="140"
                         height="140" alt="...">
                     <h2>Reparación</h2>
                     <p>Si un equipo falla dejalo en nuestras manos y será reparado en tiempo record</p>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-            <!-- START THE FEATURETTES -->
+                </div>
+            </div>
             <hr class="featurette-divider">
+
+            <?php //-- DESCRIPCION --> ?>
             <br><br>
             <div class="row featurette" id="aboutUs">
                 <div class="col-md-7">
@@ -82,6 +84,8 @@
             <br><br>
             <hr class="featurette-divider">
             <br><br>
+
+            <?php //----- CONTACTO ----- ?>
             <div class="row featurette" id="contact">
                 <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading">Contacta con nosotros. <span class="text-muted">Estaremos encantados
@@ -100,19 +104,18 @@
             </div>
             <br><br>
             <hr class="featurette-divider">
+
+            <?php //-----GOOGLE MAPS-----?>
             <div class="row featurette" id="location">
                 <div class="col-md-12">
                     <h2 class="featurette-heading">Donde estamos
                     </h2>
                     <p class="lead">Nos puedes encontrar en la C/Subida al Mayorazgo.</p>
-                    <!--Google map-->
                     <x-layout-public.googleMaps />
-                    <!--Google Maps-->
                 </div>
             </div>
             <hr class="featurette-divider">
-            <!-- /END THE FEATURETTES -->
-        </div><!-- /.container -->
+        </div>
     </main>
 
     <x-layout-public.footer />

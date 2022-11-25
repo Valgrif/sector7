@@ -133,5 +133,79 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+        // -------------CUSTOMERS ---------------------------- /
+
+        \App\Models\Report::factory()->create([
+            'customer_id' => '1',
+            'producto' => 'SN198321948329',
+            'incidencia' => 'no funciona',
+            'observaciones' => 'golpe esquina inferior derecha',
+            'fotos' => '/images/entradas/discoDuro.png',
+            'estado' => 'Diagnostico',
+            'responsable' => '3',
+            'slug' => 'SN198321948329',
+
+        ]);
+
+        \App\Models\Report::factory()->create([
+            'customer_id' => '2',
+            'producto' => 'SN909209340234903249',
+            'incidencia' => 'Imac, no funciona',
+            'observaciones' => 'Viene sin pantalla',
+            'fotos' => '/images/entradas/imacPantalla.png',
+            'estado' => 'En cola',
+            'responsable' => '2',
+            'slug' => 'SN909209340234903249',
+
+        ]);
+
+        \App\Models\Report::factory()->create([
+            'customer_id' => '3',
+            'producto' => 'SN7875863485',
+            'incidencia' => 'Portatil HP, no funciona teclado',
+            'observaciones' => 'Suciedad, faltan teclas, multiples golpes',
+            'fotos' => '/images/entradas/hpKey.jpeg',
+            'estado' => 'Entregado',
+            'responsable' => '2',
+            'slug' => 'SN7875863485',
+
+        ]);
+
+        \App\Models\Report::factory()->create([
+            'customer_id' => '4',
+            'producto' => 'SN2342823',
+            'incidencia' => 'Imac, pantalla dañada',
+            'observaciones' => 'Pantalla rajada, se aprecia golpe',
+            'fotos' => '/images/entradas/macPantalla.png',
+            'estado' => 'En revisión',
+            'responsable' => '4',
+            'slug' => 'SN2342823',
+
+        ]);
+
+        \App\Models\Report::factory()->create([
+            'customer_id' => '5',
+            'producto' => 'SN7834536774',
+            'incidencia' => 'Equipo sobremesa, mal funcionamiento drivers, formateo y limpieza',
+            'observaciones' => 'Equipo completo, teclado, raton, torre y pantalla',
+            'fotos' => '/images/entradas/pcGamiing.png',
+            'estado' => 'Pendiente de retirada',
+            'responsable' => '2',
+            'slug' => 'SN7834536774',
+
+        ]);
+
+        \App\Models\Report::factory()->create([
+            'customer_id' => '5',
+            'producto' => 'SN23593844',
+            'incidencia' => 'No funciona, solicita ampliar discos duros',
+            'observaciones' => 'Suciedad, carcasa incompleta',
+            'fotos' => '/images/entradas/server.png',
+            'estado' => 'En revisión',
+            'responsable' => '5',
+            'slug' => 'SN23593844',
+
+        ]);
+
     }
 }

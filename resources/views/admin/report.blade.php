@@ -32,22 +32,21 @@
                     </thead>
                     <tbody>
                         @foreach ($reports as $report)
-                            <tr class=""
-                                onclick="window.location='{{ route('show-report', $report->slug) }}'">
-                                <th scope="row">{{ $report->id }}</th>
-                                <th>{{ $report->producto }}</th>
-                                <th>{{ $report->incidencia }}</th>
-                                <th>{{ $report->estado }}</th>
-                                <th>
+                            <tr onclick="window.location='{{ route('show-report', $report->slug) }}'">
+                                <td scope="row">{{ $report->id }}</td>
+                                <td>{{ $report->producto }}</td>
+                                <td>{{ $report->incidencia }}</td>
+                                <td>{{ $report->estado }}</td>
+                                <td>
                                     <form action="{{ route('delete-report') }}" method="post">
                                         @csrf
-                                        <a class="btn btn-primary" href="{{ route('edit-report', $report->id) }}">
+                                        <a class="btn btn-primary" href="">
                                         <i class="bi bi-pencil"></i></a>
                                         <input type="hidden" name="id" value={{ $report->id }}>
                                         <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>
                                         </button>
                                     </form>
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -87,7 +86,7 @@
                         <div class="form-floating mb-3">
                             <input class="form-control" type="text" name="producto" id="producto"
                                 placeholder="Producto" value="{{ old('producto') }}">
-                            <label for="Producto">Producto: </label>
+                            <label for="Producto">Nº de serie del producto: </label>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -99,15 +98,22 @@
                         <div class="form-floating mb-3">
                             <input class="form-control" type="text" name="observaciones" id="observaciones"
                                 placeholder="Observaciones de entrada" value="{{ old('observaciones') }}">
-                            <label for="telefono">Teléfono: </label>
+                            <label for="observaciones">Observaciones: </label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <select name="estado" id="estado" class="form-select">
-                                <option value="">En cola</option>
-                                <option value=""></option>
+                                <option value="En cola">En cola</option>
+                                <option value="Diagnostico">En revisión</option>
+                                <option value="Presupuestado">Presupuestado</option>
+                                <option value="Pendiente de retirada">Pendiente de retirada</option>
+                                <option value="Entregado">Entregado</option>
 
                             </select>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="file" class="form-control" name="fotos" id="fotos">
                         </div>
 
                         <button type="submit" class="btn btn-primary ms-auto">Añadir</button>

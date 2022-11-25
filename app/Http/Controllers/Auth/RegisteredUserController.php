@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Report;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -47,9 +48,11 @@ class RegisteredUserController extends Controller
 
         $picture = $request->file('foto');
         $picture_file_name = $picture->getClientOriginalName();
-        $picture->move(public_path('images/profile'), $picture_file_name);
+        $picture->move(public_path('public/images/profile/'), $picture_file_name);
 
-        $validated['foto'] = "/images/profile/" . $picture_file_name;
+        $validated['foto'] = "public/images/profile/" . $picture_file_name;
+
+        //dd($validated);
 
 
         User::create([
@@ -73,9 +76,10 @@ class RegisteredUserController extends Controller
 
     }
 
-    public function edit(Request $request, User $user)
+    public function edit($id)
     {
-        return view('admin.edit-employee', ['employee' => $user]);
+        $user = User::where('id', $id)->get()->firstOrFail();
+        return view('admin.edit-employee', ['user' => $user]);
     }
 
     public function update(Request $request, User $user)
@@ -98,18 +102,7 @@ class RegisteredUserController extends Controller
 
         $validated['foto'] = "/images/profile/" . $picture_file_name;
 
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'apellidos' => $request->apellidos,
-            'direccion' => $request->direccion,
-            'telefono' => $request->telefono,
-            'dni' => $request->dni,
-            'foto' =>$request->foto,
-            'role' => 'Tecnico',
-        ]);
+        $user->update();
 
         return redirect('/app/employee-list');
     }
@@ -123,8 +116,11 @@ class RegisteredUserController extends Controller
 
     public function show ($dni)
     {
-        $employee = User::where('slug', $dni)->get()->firstOrFail();
-        return view('admin.profile', ["employee" => $employee]);
+        $employee = User::where('dni', $dni)->get()->firstOrFail();
+        return view('admin.single-employee', [
+            "employee" => $employee,
+            "reports" => Report::all()->where('responsable' == $employee['id'])
+        ]);
     }
 
 
