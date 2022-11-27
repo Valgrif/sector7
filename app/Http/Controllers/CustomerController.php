@@ -21,7 +21,7 @@ class CustomerController extends Controller
             'nombre' => "required|max:255",
             'direccion' => "required|max:255",
             'cif' => "required|min:9|max:9",
-            'mail' => "required|max:100",
+            'mail' => "required|email|max:100",
             'telefono' => "required|max:9",
             'encargado' => "required|max:100",
 
@@ -34,9 +34,19 @@ class CustomerController extends Controller
         return redirect('/app/customer-list');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        return view('admin.customers', ["customers" => Customer::all()]);
+        $textSearch=trim($request->get('searchFor'));
+        $customers=Customer::query()
+                    ->select()
+                    ->where('nombre', 'LIKE', '%'.$textSearch.'%')
+                    ->orWhere('cif', 'LIKE', '%'.$textSearch.'%')
+                    ->orderby('nombre', 'asc')
+                    ->paginate(10);
+
+        return view('admin.customers', [
+            "customers" => $customers,
+        ]);
     }
 
     public function edit(Request $request, Customer $customer)

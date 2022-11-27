@@ -49,10 +49,17 @@ class ReportController extends Controller
         return redirect('/app/report-list');
     }
 
-    public function list()
+    public function list(Request $request)
     {
+        $textSearch=trim($request->get('searchFor'));
+        $reports=Report::query()
+            ->select()
+            ->where('numeroDeSerie', 'like', '%'.$textSearch.'%')
+            ->orderby('id', 'asc')
+            ->paginate(10);
+
         return view('admin.report',[
-            "reports" => Report::all(),
+            "reports" => $reports,
             "employees" => User::all(),
             "customers" => Customer::all(),
         ]);
@@ -88,6 +95,14 @@ class ReportController extends Controller
             'responsable' =>"required|exists:users,id",
         ]);
 
+        if ($request['fotos'] != null)
+        {
+            $picture = $request->file('fotos');
+            $picture_file_name = $picture->getClientOriginalName();
+            $picture->move(public_path('images/entradas'), $picture_file_name);
+            $validated['fotos'] = "/images/entradas/" . $picture_file_name;
+
+        }
         $report->update($validated);
 
         return redirect('/app/report-list');

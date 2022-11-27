@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
+use App\Models\Report;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class EventController extends Controller
@@ -65,7 +69,14 @@ class EventController extends Controller
 
     public function listHome()
     {
-        $events = DB::table('events')->whereDate('start', now())->get();
-        return view('admin.home', ["events" => $events]);
+        $id = Auth::id();
+        $events = DB::table('events')
+                ->where('start', now()
+                )->get();
+
+        return view('admin.home', [
+            "events" => $events,
+            "reports" => Report::where('responsable', $id)->get()
+        ]);
     }
 }

@@ -20,10 +20,16 @@
         ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="table-responsive-sm m-4">
+
+                <form action="/app/report-list" method="get">
+                    <input  style="width: 20%" name="searchFor" type="search" placeholder="Buscador por número de serie">
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                   </form>
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">NUMERO DE SERIE</th>
                             <th scope="col">PRODUCTO</th>
                             <th scope="col">AVERIA</th>
                             <th scope="col" wire:click="">ESTADO</th>
@@ -33,7 +39,7 @@
                     <tbody>
                         @foreach ($reports->sortByDesc('id') as $report)
                             <tr onclick="window.location='{{ route('show-report', $report->slug) }}'">
-                                <td scope="row">{{ $report->id }}</td>
+                                <td scope="row">{{ $report->numeroDeSerie}}</td>
                                 <td>{{ $report->producto }}</td>
                                 <td>{{ $report->incidencia }}</td>
                                 <td>{{ $report->estado }}</td>

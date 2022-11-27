@@ -21,20 +21,11 @@
         ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="table-responsive-sm m-4">
-                <form action="{{route('list-customer')}}" method="get">
-                    <div class="col-x1-12">
-                        <form action="">
-                            <div class="form-now">
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="texto" id="">
-                                </div>
-                                <div class="col-auto">
-                                   <input type="submit" class="btn btn-primary" value="Buscar">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </form>
+
+               <form action="/app/customer-list" method="get">
+                <input  name="searchFor" type="search" placeholder="Buscar por nombre o cif">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+               </form>
 
                 <table class="table table-hover">
                     <thead>

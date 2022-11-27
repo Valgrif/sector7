@@ -9,7 +9,6 @@
                 @csrf @method('patch')
                 <div class="form-floating mb-3">
                     <select name="customer_id" id="customer_id" class="form-select">
-                        <option value="">--- Cliente ---</option>
                         @foreach ($customers as $customer)
                             <option
                                 value="{{ $customer->id }}"{{ $customer->id == old('customer_id') ? 'selected' : '' }}>
@@ -20,12 +19,14 @@
                 </div>
                 <div class="form-floating mb-3">
                     <select name="responsable" id="responsable" class="form-select">
-                        <option value="">--- Técnico encargado ---</option>
                         @foreach ($employees as $employee)
-                            <option
-                                value="{{ $employee->id }}"{{ $employee->id == old('responsable') ? 'selected' : '' }}>
+                            @if(old('responsable') == $employee->id)
+                                <option value="{{$employee->id}}" {{ $employee->id == old('responsable') ? 'selected' : '' }}> {{$employee->id}} </option>
+                            @else
+                            <option value="{{ $employee->id }}">
                                 {{ $employee->name }}
                             </option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -54,12 +55,12 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <select name="estado" id="estado" class="form-select" value="{{$report->estado}}">
-                        <option value="En cola">En cola</option>
-                        <option value="Diagnostico">En revisión</option>
-                        <option value="Presupuestado">Presupuestado</option>
-                        <option value="Pendiente de retirada">Pendiente de retirada</option>
-                        <option value="Entregado">Entregado</option>
+                    <select name="estado" id="estado" class="form-select" >
+                        <option value="En cola" {{old('estado') == 'En cola' ? 'selected' : ''}}>En cola</option>
+                        <option value="Diagnostico" {{old('estado') == 'Diagnostico' ? 'selected' : ''}}>En revisión</option>
+                        <option value="Presupuestado" {{old('estado') == 'Presupuestado' ? 'selected' : ''}}>Presupuestado</option>
+                        <option value="Pendiente de retirada" {{old('estado') == 'Pendiente de retirada' ? 'selected' : ''}}>Pendiente de retirada</option>
+                        <option value="Entregado" {{old('estado') == 'Entregado' ? 'selected' : ''}}>Entregado</option>
 
                     </select>
                 </div>

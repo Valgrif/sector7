@@ -21,11 +21,7 @@
                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Partes</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0 text-white">
-                    <i class="fs-4 bi bi-currency-exchange"></i> <span class="ms-1 d-none d-sm-inline">Facturación</span>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a href="{{ route('list-customer') }}" class="nav-link align-middle px-0 text-white">
                     <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Clientes</span>
@@ -65,6 +61,11 @@
         </div>
 
         <!-- <div class="col py-3">
+                       <li class="nav-item">
+                <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0 text-white">
+                    <i class="fs-4 bi bi-currency-exchange"></i> <span class="ms-1 d-none d-sm-inline">Facturación</span>
+                </a>
+            </li>
         </div>-->
     </div>
 </div>

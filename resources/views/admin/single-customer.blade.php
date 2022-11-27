@@ -4,6 +4,7 @@
             <div class="col-md-7">
                 <h2>{{$customer->nombre}}</h2>
                 <h3>Encargado: <span class="text-muted">{{$customer->encargado}}</span></h3>
+                <p>Cif: {{$customer->cif}}</p>
                 <p >Direccion: {{$customer->direccion}}</p>
                 <p >Telefono: {{$customer->telefono}}</p>
                 <p >Correo: {{$customer->mail}}</p>
