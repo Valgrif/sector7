@@ -16,7 +16,7 @@
     ?>
     <div class="tab-content" id="myTabContent">
 
-        <?php  //------------------------------------------------------LISTA PARTES //------------------------------------------------------>
+        <?php //------------------------------------------------------LISTA PARTES //------------------------------------------------------>
         ?>
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="table-responsive-sm m-4">
@@ -26,12 +26,12 @@
                             <th scope="col">ID</th>
                             <th scope="col">PRODUCTO</th>
                             <th scope="col">AVERIA</th>
-                            <th scope="col">ESTADO</th>
+                            <th scope="col" wire:click="">ESTADO</th>
                             <th scrope="col">ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($reports as $report)
+                        @foreach ($reports->sortByDesc('id') as $report)
                             <tr onclick="window.location='{{ route('show-report', $report->slug) }}'">
                                 <td scope="row">{{ $report->id }}</td>
                                 <td>{{ $report->producto }}</td>
@@ -40,8 +40,8 @@
                                 <td>
                                     <form action="{{ route('delete-report') }}" method="post">
                                         @csrf
-                                        <a class="btn btn-primary" href="">
-                                        <i class="bi bi-pencil"></i></a>
+                                        <a class="btn btn-primary" href="{{route('edit-report', $report->slug)}}">
+                                            <i class="bi bi-pencil"></i></a>
                                         <input type="hidden" name="id" value={{ $report->id }}>
                                         <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>
                                         </button>
@@ -67,7 +67,8 @@
                             <select name="customer_id" id="customer_id" class="form-select">
                                 <option value="">--- Cliente ---</option>
                                 @foreach ($customers as $customer)
-                                    <option value="{{ $customer->id }}"{{$customer->id == old('customer_id') ? "selected" : ""}}>
+                                    <option
+                                        value="{{ $customer->id }}"{{ $customer->id == old('customer_id') ? 'selected' : '' }}>
                                         {{ $customer->nombre }}
                                     </option>
                                 @endforeach
@@ -77,27 +78,35 @@
                             <select name="responsable" id="responsable" class="form-select">
                                 <option value="">--- Técnico encargado ---</option>
                                 @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}"{{$employee->id == old('responsable') ? "selected" : ""}}>
+                                    <option
+                                        value="{{ $employee->id }}"{{ $employee->id == old('responsable') ? 'selected' : '' }}>
                                         {{ $employee->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control" type="text" name="numeroDeSerie" id="numeroDeSerie"
+                                placeholder="numeroDeSerie" value="{{ old('numeroDeSerie') }}">
+                            <label for="numeroDeSerie">Nº de serie: </label>
+                        </div>
+
                         <div class="form-floating mb-3">
                             <input class="form-control" type="text" name="producto" id="producto"
-                                placeholder="Producto" value="{{ old('producto') }}">
-                            <label for="Producto">Nº de serie del producto: </label>
+                                placeholder="Tipo de producto" value="{{ old('producto') }}">
+                            <label for="Producto">Producto: </label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input class="form-control" type="text" name="incidencia" id="incidencia"
-                                placeholder="Describe el problema" value="{{ old('incidencia') }}">
+                                placeholder="Descripción del problema" value="{{ old('incidencia') }}">
                             <label for="incidencia">Incidencia: </label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input class="form-control" type="text" name="observaciones" id="observaciones"
-                                placeholder="Observaciones de entrada" value="{{ old('observaciones') }}">
+                                placeholder="Observaciones del estado del equipo" value="{{ old('observaciones') }}">
                             <label for="observaciones">Observaciones: </label>
                         </div>
 

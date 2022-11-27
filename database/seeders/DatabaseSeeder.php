@@ -133,11 +133,12 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        // -------------CUSTOMERS ---------------------------- /
+        // -------------REPORTS ---------------------------- /
 
         \App\Models\Report::factory()->create([
             'customer_id' => '1',
-            'producto' => 'SN198321948329',
+            'numeroDeSerie' => 'SN198321948329',
+            'producto' => "disco duro",
             'incidencia' => 'no funciona',
             'observaciones' => 'golpe esquina inferior derecha',
             'fotos' => '/images/entradas/discoDuro.png',
@@ -149,8 +150,9 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Report::factory()->create([
             'customer_id' => '2',
-            'producto' => 'SN909209340234903249',
-            'incidencia' => 'Imac, no funciona',
+            'numeroDeSerie' => 'SN909209340234903249',
+            'producto' => "Imac",
+            'incidencia' => "No funciona",
             'observaciones' => 'Viene sin pantalla',
             'fotos' => '/images/entradas/imacPantalla.png',
             'estado' => 'En cola',
@@ -161,8 +163,9 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Report::factory()->create([
             'customer_id' => '3',
-            'producto' => 'SN7875863485',
-            'incidencia' => 'Portatil HP, no funciona teclado',
+            'numeroDeSerie' => 'SN7875863485',
+            'producto' => "Portatil HP",
+            'incidencia' => 'No funciona teclado',
             'observaciones' => 'Suciedad, faltan teclas, multiples golpes',
             'fotos' => '/images/entradas/hpKey.jpeg',
             'estado' => 'Entregado',
@@ -173,8 +176,9 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Report::factory()->create([
             'customer_id' => '4',
-            'producto' => 'SN2342823',
-            'incidencia' => 'Imac, pantalla dañada',
+            'numeroDeSerie' => 'SN2342823',
+            'producto' => 'Imac',
+            'incidencia' => 'Pantalla dañada',
             'observaciones' => 'Pantalla rajada, se aprecia golpe',
             'fotos' => '/images/entradas/macPantalla.png',
             'estado' => 'En revisión',
@@ -185,8 +189,9 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Report::factory()->create([
             'customer_id' => '5',
-            'producto' => 'SN7834536774',
-            'incidencia' => 'Equipo sobremesa, mal funcionamiento drivers, formateo y limpieza',
+            'numeroDeSerie' => 'SN7834536774',
+            'producto' => 'Equipo sobremesa',
+            'incidencia' => 'Mal funcionamiento drivers, formateo y limpieza',
             'observaciones' => 'Equipo completo, teclado, raton, torre y pantalla',
             'fotos' => '/images/entradas/pcGamiing.png',
             'estado' => 'Pendiente de retirada',
@@ -197,12 +202,13 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Report::factory()->create([
             'customer_id' => '5',
-            'producto' => 'SN23593844',
+            'numeroDeSerie' => 'SN23593844',
+            'producto' => 'Servidor',
             'incidencia' => 'No funciona, solicita ampliar discos duros',
             'observaciones' => 'Suciedad, carcasa incompleta',
             'fotos' => '/images/entradas/server.png',
             'estado' => 'En revisión',
-            'responsable' => '5',
+            'responsable' => '1',
             'slug' => 'SN23593844',
 
         ]);

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ReportController;
-use App\Models\Event;
 
 //---------- WEB ---------------------------------------------------------------------------------------------------------//
 
@@ -16,19 +15,8 @@ Route::get('/', function () {
 
 //---------- LOGIN -------------------------------------------------------------------------------------------------------//
 
-Route::get('/login', function () {
-    return view(
-        'auth.login',
-        ['events' => Event::all()]
-    )->name('login');
-});
-
 Route::get('/app', [EventController::class, 'listHome'])->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
 require __DIR__ . '/auth.php';
-
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout'); //Cerrar sesion
 
 //---------- CALENDAR ----------------------------------------------------------------------------------------------------//
@@ -42,11 +30,8 @@ Route::get('/app/home', [EventController::class, 'list'])->middleware(['auth', '
 Route::get('/app/new-customer', [CustomerController::class, 'new_form'])->middleware(['auth', 'verified'])->name('new-customer-form');
 Route::post('/app/new-customer', [CustomerController::class, 'create'])->middleware(['auth', 'verified'])->name('create-customer');
 Route::get('/app/customer/{slug}', [CustomerController::class, 'show'])->middleware(['auth', 'verified'])->name('show-customer');
-
 Route::get('/app/customer-list', [CustomerController::class, 'list'])->middleware(['auth', 'verified'])->name('list-customer');
-
 Route::post('/app/customer-list', [CustomerController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-customer');
-
 Route::get('/app/{customer}/edit', [CustomerController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-customer');
 Route::patch('/app/{customer}/update', [CustomerController::class, 'update'])->middleware(['auth', 'verified'])->name('update-customer');
 
@@ -58,12 +43,8 @@ Route::post('/app/new-employee', [RegisteredUserController::class, 'store'])->mi
 Route::get('/app/employee-list', [RegisteredUserController::class, 'list'])->middleware(['auth', 'verified'])->name('list-employees');
 Route::post('/app/employee-list', [RegisteredUserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-employee');
 Route::get('/app/employee/{dni}', [RegisteredUserController::class, 'show'])->middleware(['auth', 'verified'])->name('show-employee');
-
 Route::get('/app/edit/employee{id}', [RegisteredUserController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-employee');
 Route::patch('/app/update/employee{id}', [RegisteredUserController::class, 'update'])->middleware(['auth', 'verified'])->name('update-employee');
-
-
-
 
 //---------- REPORT -------------------------------------------------------------------------------------------------------//
 
@@ -72,10 +53,13 @@ Route::post('/app/new-report', [ReportController::class, 'create'])->middleware(
 Route::get('/app/report-list', [ReportController::class, 'list'])->middleware(['auth', 'verified'])->name('list-report');
 Route::post('/app/report-list', [ReportController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-report');
 
+Route::get('/app/report/{slug}', [ReportController::class, 'show'])->middleware(['auth', 'verified'])->name('show-report');
+Route::get('/app/edit/{slug}', [ReportController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-report');
+Route::patch('/app/update/{slug}', [ReportController::class, 'update'])->middleware(['auth', 'verified'])->name('update-report');
+Route::patch('/app/repair/{slug}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');
 
-Route::get('/app/report/{dni}', [ReportController::class, 'show'])->middleware(['auth', 'verified'])->name('show-report');
-Route::get('/app/edit/{dni}', [ReportController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-report');
-Route::patch('/app/update/{dni}', [ReportController::class, 'update'])->middleware(['auth', 'verified'])->name('update-report');
+
+//Route::patch('/app/update/{slug}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');
 
 
 

@@ -23,7 +23,8 @@ class ReportController extends Controller
 
         $validated = $request->validate([
             'customer_id' => "required|exists:customers,id",
-            'producto' => "required|",
+            'numeroDeSerie' => "required | max:120",
+            'producto' => "required",
             'incidencia' =>"required|max:255",
             'observaciones' =>"required|max:300",
             'fotos' =>"image",
@@ -31,12 +32,17 @@ class ReportController extends Controller
             'responsable' =>"required|exists:users,id",
         ]);
 
-        $picture = $request->file('fotos');
-        $picture_file_name = $picture->getClientOriginalName();
-        $picture->move(public_path('images/entradas'), $picture_file_name);
+        if ($request['fotos'] != null)
+        {
+            $picture = $request->file('fotos');
+            $picture_file_name = $picture->getClientOriginalName();
+            $picture->move(public_path('images/entradas'), $picture_file_name);
+            $validated['fotos'] = "/images/entradas/" . $picture_file_name;
 
-        $validated['fotos'] = "/images/entradas/" . $picture_file_name;
-        $validated['slug'] = Str::slug($validated['producto']);
+        }
+
+
+        $validated['slug'] = Str::slug($validated['numeroDeSerie']);
 
         Report::create($validated);
 
@@ -60,16 +66,22 @@ class ReportController extends Controller
         return redirect('app/report-list');
     }
 
-    public function edit(Request $request, Report $report)
+    public function edit($slug)
     {
-        return view('admin.edit-report', ['report' => $report]);
+        $report = Report::where('slug', $slug)->get()->firstOrFail();
+        return view('admin.edit-report', [
+            'report' => $report,
+            "employees" => User::all(),
+            "customers" => Customer::all(),
+        ]);
     }
 
     public function update(Request $request, Report $report)
     {
         $validated = $request->validate([
             'customer_id' => "required|exists:customers,id",
-            'producto' => "required|",
+            'numeroDeSerie' => "required | max:120",
+            'producto' => "required",
             'incidencia' =>"required|max:255",
             'observaciones' =>"required|max:300",
             'estado' =>"required",
@@ -82,10 +94,31 @@ class ReportController extends Controller
 
     }
 
+    public function repair(Request $request, $id)
+    {
+        $request->validate([
+            'estado' => "required",
+            'reparacion' => "required",
+        ]);
+
+        $report = Report::find($id)->get()->firstOrFail();
+        $report->estado = $request->get('estado');
+        $report->reparacion = $request->get('reparacion');
+        $report->save();
+
+        return redirect('/app/report-list');
+    }
+
     public function show ($slug)
     {
         $report = Report::where('slug', $slug)->get()->firstOrFail();
-        return view('admin.single-report', ["report" => $report]);
+        $employee = User::where('id', $report['responsable'])->get()->firstOrFail();
+        $customer = Customer::where('id', $report['customer_id'])->get()->firstOrFail();
+        return view('admin.single-report', [
+            "report" => $report,
+            "employee" => $employee,
+            "customer" => $customer,
+        ]);
     }
 
 }

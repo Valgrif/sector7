@@ -48,9 +48,9 @@ class RegisteredUserController extends Controller
 
         $picture = $request->file('foto');
         $picture_file_name = $picture->getClientOriginalName();
-        $picture->move(public_path('public/images/profile/'), $picture_file_name);
+        $picture->move(public_path('images/profile'), $picture_file_name);
 
-        $validated['foto'] = "public/images/profile/" . $picture_file_name;
+        $validated['foto'] = "/images/profile/" . $picture_file_name;
 
         //dd($validated);
 
@@ -119,7 +119,7 @@ class RegisteredUserController extends Controller
         $employee = User::where('dni', $dni)->get()->firstOrFail();
         return view('admin.single-employee', [
             "employee" => $employee,
-            "reports" => Report::all()->where('responsable' == $employee['id'])
+            "reports" => Report::all()->where('responsable', '==', $employee['id'])
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Customer;
+use App\Models\Report;
 use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
@@ -73,15 +74,10 @@ class CustomerController extends Controller
     public function show ($slug)
     {
         $customer = Customer::where('slug', $slug)->get()->firstOrFail();
-        return view('admin.single-customer', ["customer" => $customer]);
-    }
-
-    public function index(Request $request)
-    {
-        $texto=trim($request->get('texto'));
-        $customer=DB::table('customer')->select('id');
-        return view('',compact('customers'));
-
+        return view('admin.single-customer', [
+            "customer" => $customer,
+            "reports" => Report::all()->where('customer_id', '==', $customer['id'])
+        ]);
     }
 }
 

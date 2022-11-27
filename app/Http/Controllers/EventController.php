@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\DB;
+
 
 class EventController extends Controller
 {
@@ -57,14 +59,13 @@ class EventController extends Controller
              break;
 
            default:
-             # code...
              break;
         }
     }
 
     public function listHome()
     {
-        $events = Event::all();
+        $events = DB::table('events')->whereDate('start', now())->get();
         return view('admin.home', ["events" => $events]);
     }
 }
