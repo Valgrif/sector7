@@ -27,11 +27,11 @@
                         @csrf @method('patch')
                         <div class="form-floating mb-3">
                             <select name="estado" id="estado" class="form-select">
-                                <option value="En cola">En cola</option>
-                                <option value="Diagnostico">En revisión</option>
-                                <option value="Presupuestado">Presupuestado</option>
-                                <option value="Pendiente de retirada">Pendiente de retirada</option>
-                                <option value="Entregado">Entregado</option>
+                                <option value="En cola" {{$report['estado'] == 'En cola' ? 'selected' : ''}}>En cola</option>
+                                <option value="Diagnostico" {{$report['estado']== 'Diagnostico' ? 'selected' : ''}}>En revisión</option>
+                                <option value="Presupuestado" {{$report['estado'] == 'Presupuestado' ? 'selected' : ''}}>Presupuestado</option>
+                                <option value="Pendiente de retirada" {{$report['estado'] == 'Pendiente de retirada' ? 'selected' : ''}}>Pendiente de retirada</option>
+                                <option value="Entregado" {{$report['estado'] == 'Entregado' ? 'selected' : ''}}>Entregado</option>
 
                             </select>
                         </div>

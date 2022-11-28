@@ -11,7 +11,7 @@
                     <select name="customer_id" id="customer_id" class="form-select">
                         @foreach ($customers as $customer)
                             <option
-                                value="{{ $customer->id }}"{{ $customer->id == old('customer_id') ? 'selected' : '' }}>
+                                value="{{ $customer->id }}"{{ $customer['id'] == $report['customer_id'] ? 'selected' : '' }}>
                                 {{ $customer->nombre }}
                             </option>
                         @endforeach
@@ -20,13 +20,9 @@
                 <div class="form-floating mb-3">
                     <select name="responsable" id="responsable" class="form-select">
                         @foreach ($employees as $employee)
-                            @if(old('responsable') == $employee->id)
-                                <option value="{{$employee->id}}" {{ $employee->id == old('responsable') ? 'selected' : '' }}> {{$employee->id}} </option>
-                            @else
-                            <option value="{{ $employee->id }}">
+                            <option value="{{ $employee->id }}" {{ $employee['id'] == $report['responsable'] ? 'selected' : '' }}>
                                 {{ $employee->name }}
                             </option>
-                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -55,13 +51,12 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <select name="estado" id="estado" class="form-select" >
-                        <option value="En cola" {{old('estado') == 'En cola' ? 'selected' : ''}}>En cola</option>
-                        <option value="Diagnostico" {{old('estado') == 'Diagnostico' ? 'selected' : ''}}>En revisión</option>
-                        <option value="Presupuestado" {{old('estado') == 'Presupuestado' ? 'selected' : ''}}>Presupuestado</option>
-                        <option value="Pendiente de retirada" {{old('estado') == 'Pendiente de retirada' ? 'selected' : ''}}>Pendiente de retirada</option>
-                        <option value="Entregado" {{old('estado') == 'Entregado' ? 'selected' : ''}}>Entregado</option>
-
+                    <select name="estado" id="estado" class="form-select">
+                        <option value="En cola" {{$report['estado'] == 'En cola' ? 'selected' : ''}}>En cola</option>
+                        <option value="Diagnostico" {{$report['estado']== 'Diagnostico' ? 'selected' : ''}}>En revisión</option>
+                        <option value="Presupuestado" {{$report['estado'] == 'Presupuestado' ? 'selected' : ''}}>Presupuestado</option>
+                        <option value="Pendiente de retirada" {{$report['estado'] == 'Pendiente de retirada' ? 'selected' : ''}}>Pendiente de retirada</option>
+                        <option value="Entregado" {{$report['estado'] == 'Entregado' ? 'selected' : ''}}>Entregado</option>
                     </select>
                 </div>
 

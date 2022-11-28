@@ -58,6 +58,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{$customers->links('pagination::bootstrap-5')}}
             </div>
 
         </div>

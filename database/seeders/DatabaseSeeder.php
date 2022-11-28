@@ -263,7 +263,7 @@ class DatabaseSeeder extends Seeder
             'incidencia' => 'Pantalla dañada',
             'observaciones' => 'Pantalla rajada, se aprecia golpe',
             'fotos' => '/images/entradas/macPantalla.png',
-            'estado' => 'En revisión',
+            'estado' => 'Diagnostico',
             'responsable' => '4',
             'slug' => 'SN2342823',
 
@@ -289,7 +289,7 @@ class DatabaseSeeder extends Seeder
             'incidencia' => 'No funciona, solicita ampliar discos duros',
             'observaciones' => 'Suciedad, carcasa incompleta',
             'fotos' => '/images/entradas/server.png',
-            'estado' => 'En revisión',
+            'estado' => 'Diagnostico',
             'responsable' => '1',
             'slug' => 'SN23593844',
 
