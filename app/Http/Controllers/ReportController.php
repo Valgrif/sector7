@@ -83,7 +83,7 @@ class ReportController extends Controller
         ]);
     }
 
-    public function update(Request $request, Report $report)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'customer_id' => "required|exists:customers,id",
@@ -95,6 +95,8 @@ class ReportController extends Controller
             'responsable' =>"required|exists:users,id",
         ]);
 
+        $validated['slug'] = Str::slug($validated['numeroDeSerie']);
+
         if ($request['fotos'] != null)
         {
             $picture = $request->file('fotos');
@@ -103,6 +105,8 @@ class ReportController extends Controller
             $validated['fotos'] = "/images/entradas/" . $picture_file_name;
 
         }
+
+        $report = Report::where('id', $id)->get()->firstOrFail();
         $report->update($validated);
 
         return redirect('/app/report-list');
