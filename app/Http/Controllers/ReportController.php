@@ -109,19 +109,24 @@ class ReportController extends Controller
 
     }
 
-    public function repair(Request $request, $id)
+    public function repair(Request $request, $slug)
     {
-        $request->validate([
+        $validated = $request->validate([
             'estado' => "required",
             'reparacion' => "required",
         ]);
 
-        $report = Report::find($id)->get()->firstOrFail();
-        $report->estado = $request->get('estado');
-        $report->reparacion = $request->get('reparacion');
-        $report->save();
+        $report = Report::where('slug', $slug)->get()->firstOrFail();
+        $report->update($validated);
 
-        return redirect('/app/report-list');
+
+        $customer = Customer::where('id', $report['customer_id'])->get()->firstOrFail();
+        $employee = User::where('id', $report['responsable'])->get()->firstOrFail();
+        return view('admin.single-report', [
+            "report" => $report,
+            "employee" => $employee,
+            "customer" => $customer,
+        ]);
     }
 
     public function show ($slug)

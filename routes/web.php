@@ -56,7 +56,7 @@ Route::post('/app/report-list', [ReportController::class, 'destroy'])->middlewar
 Route::get('/app/report/{slug}', [ReportController::class, 'show'])->middleware(['auth', 'verified'])->name('show-report');
 Route::get('/app/edit/{slug}', [ReportController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-report');
 Route::patch('/app/update/{slug}', [ReportController::class, 'update'])->middleware(['auth', 'verified'])->name('update-report');
-Route::patch('/app/repair/{slug}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');
+Route::patch('/app/repair/{id}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');
 
 
 //Route::patch('/app/update/{slug}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');

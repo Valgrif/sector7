@@ -133,6 +133,87 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'Ayuntamiento San Cristobal de la Laguna',
+            'direccion' => 'Plaza del adelantado 7',
+            'cif' => 'B42345678',
+            'mail' => 'aytolalaguna@lalaguna.com',
+            'telefono' => '637456889',
+            'encargado' => 'Ana',
+            'slug' => 'B42345678',
+
+        ]);
+
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'TecnoCasa',
+            'direccion' => 'C/ Heraclio Sanchez 8',
+            'cif' => 'B72347778',
+            'mail' => 'tecnocasa@gmail.com',
+            'telefono' => '633444777',
+            'encargado' => 'Isabel',
+            'slug' => 'B72347778',
+
+        ]);
+
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'Reformas Paco',
+            'direccion' => 'C/ Sin salida 11',
+            'cif' => 'B111222789',
+            'mail' => 'pacoreformas@gmail.com',
+            'telefono' => '922404050',
+            'encargado' => 'Paco',
+            'slug' => 'B111222789',
+
+        ]);
+
+
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'Cafeteria Center',
+            'direccion' => 'C/ Castillo 12',
+            'cif' => 'B222456723',
+            'mail' => 'cafeteriacenter1@gmail.com',
+            'telefono' => '922907681',
+            'encargado' => 'Maria',
+            'slug' => 'B222456723',
+
+        ]);
+
+
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'Western Union',
+            'direccion' => 'Plaza Candelaria 9',
+            'cif' => 'B123987546',
+            'mail' => 'westrn@gmail.com',
+            'telefono' => '922125650',
+            'encargado' => 'Marce',
+            'slug' => 'B123987546',
+
+        ]);
+
+
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'Adrian Duran',
+            'direccion' => 'C/ Esperides 73',
+            'cif' => 'B48484848',
+            'mail' => 'adrianasesoria@gmail.com',
+            'telefono' => '654756554',
+            'encargado' => 'Adrian',
+            'slug' => 'B48484848',
+
+        ]);
+
+
+        \App\Models\Customer::factory()->create([
+            'nombre' => 'Amandi Hoteles',
+            'direccion' => 'C/ Vicente ferrer 31',
+            'cif' => 'B78984832',
+            'mail' => 'amandohpteleslalaguna@amandigroup.com',
+            'telefono' => '667776887',
+            'encargado' => 'Eugenio',
+            'slug' => 'B78984832',
+
+        ]);
+
         // -------------REPORTS ---------------------------- /
 
         \App\Models\Report::factory()->create([
@@ -169,6 +250,7 @@ class DatabaseSeeder extends Seeder
             'observaciones' => 'Suciedad, faltan teclas, multiples golpes',
             'fotos' => '/images/entradas/hpKey.jpeg',
             'estado' => 'Entregado',
+            'reparacion' => 'Sustitución de teclado',
             'responsable' => '2',
             'slug' => 'SN7875863485',
 

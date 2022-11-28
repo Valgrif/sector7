@@ -10,7 +10,6 @@
                     <p>Incidencia: {{ $report->incidencia }}</p>
                     <p>Observaciones: {{ $report->observaciones }}</p>
                     <p>Fecha de entrada: {{ $report->created_at->toDateString() }}</p>
-                    <p>Reparacion: {{$report->reparacion}}</p>
                 </div>
             </div>
             <div class="col-md-5">
@@ -24,7 +23,7 @@
                 <h2>Diagnostico y reparación</h2>
 
                 @if ($report['estado'] != 'Entregado')
-                    <form action="{{ route('repair-report', $report->id) }}" method=post>
+                    <form action="{{ route('repair-report', $report->slug) }}" method=post>
                         @csrf @method('patch')
                         <div class="form-floating mb-3">
                             <select name="estado" id="estado" class="form-select">
@@ -38,9 +37,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="reparacion" id="reparacion" placeholder="reparacion" style="height: 300px">
-                                {{$report->reparacion}}
-                            </textarea>
+                            <textarea class="form-control" name="reparacion" id="reparacion" placeholder="reparacion" style="height: 300px"><?php echo $report->reparacion; ?></textarea>
                             <label for="reparacion">Diagnostico y reparación aplicada: </label>
                         </div>
 
@@ -48,8 +45,8 @@
                     </form>
                 @else
                     <div class="container ">
-                        <p>Estado: {{$report->estado}}</p>
-                        <p>Diagnosis: {{$report->reparacion}}</p>
+                        <p>Estado: {{ $report->estado }}</p>
+                        <p>Diagnosis: {{ $report->reparacion }}</p>
                     </div>
                 @endif
             </div>
