@@ -1,6 +1,7 @@
 <x-layout-user>
 
-    <?php //-- PESTAÑAS -->?>
+    <?php //-- PESTAÑAS -->
+    ?>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -13,7 +14,8 @@
         </li>
     </ul>
 
-    <?php //-- CONTENIDO PESTAÑAS -- ?>
+    <?php //-- CONTENIDO PESTAÑAS --
+    ?>
 
     <div class="tab-content" id="myTabContent">
 
@@ -22,10 +24,10 @@
         <div class="tab-pane fade show <?php echo $errors->any() ? '' : 'show active'; ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="table-responsive-sm m-4">
 
-               <form action="/app/customer-list" method="get">
-                <input  name="searchFor" type="search" placeholder="Buscar por nombre o cif">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
-               </form>
+                <form action="/app/customer-list" method="get">
+                    <input name="searchFor" type="search" placeholder="Buscar por nombre o cif">
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                </form>
 
                 <table class="table table-hover">
                     <thead>
@@ -58,7 +60,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{$customers->links('pagination::bootstrap-5')}}
+                {{ $customers->links('pagination::bootstrap-5') }}
             </div>
 
         </div>

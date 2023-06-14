@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Customer;
 use App\Models\Report;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
