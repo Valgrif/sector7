@@ -61,9 +61,8 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" name="reparacion" id="reparacion" placeholder="reparacion" style="height: 300px">
-                        <?php echo $report->reparacion; ?>
-                    </textarea>
+                    <textarea class="form-control" name="reparacion" id="reparacion" 
+                    placeholder="reparacion" style="height: 300px">{{$report->reparacion}}</textarea>
                     <label for="reparacion">Diagnostico y reparación aplicada: </label>
                 </div>
 

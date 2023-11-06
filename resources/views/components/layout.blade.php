@@ -16,7 +16,8 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous" defer>
     </script>
     <!--GOOGLE MAPS-->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBX-OKE8uhi81P5mPcPc4WM_80o0N2jTA&callback=initMap"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap"></script>
+
 </head>
 </head>
 
