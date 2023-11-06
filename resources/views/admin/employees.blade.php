@@ -32,14 +32,14 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            <tr onclick="window.location='{{ route('show-employee', $user->dni) }}'">
-                                <td scope="row"><img src="{{ $user->foto }}" alt="{{ $user->name }}"
+                            <tr>
+                                <td onclick="window.location='{{ route('show-employee', $user->dni) }}'" scope="row"><img src="{{ $user->foto }}" alt="{{ $user->name }}"
                                         width="30" height="30" class="rounded-circle"></td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->telefono }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td onclick="window.location='{{ route('show-employee', $user->dni) }}'">{{ $user->name }}</td>
+                                <td onclick="window.location='{{ route('show-employee', $user->dni) }}'">{{ $user->telefono }}</td>
+                                <td onclick="window.location='{{ route('show-employee', $user->dni) }}'">{{ $user->email }}</td>
                                 <td>
-                                    <form action="{{ route('delete-employee') }}" method="post">
+                                    <form action="{{ route('delete-employee') }}" method="post" class="formEliminar">
                                         @csrf
                                         <a class="btn btn-primary" href="{{ route('edit-employee', $user->id) }}">
                                             <i class="bi bi-pencil"></i></a>

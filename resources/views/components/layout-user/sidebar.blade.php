@@ -53,10 +53,7 @@
                         <button type="submit" class="dropdown-item"> Desconectar</button>
                 </li>
                 </form>
-                <li><a class="dropdown-item" href="#">Check in</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
+               
             </ul>
         </div>
 

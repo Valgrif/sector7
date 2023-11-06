@@ -59,8 +59,6 @@ Route::patch('/app/update/{slug}', [ReportController::class, 'update'])->middlew
 Route::patch('/app/repair/{id}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');
 
 
-//Route::patch('/app/update/{slug}', [ReportController::class, 'repair'])->middleware(['auth', 'verified'])->name('repair-report');
-
 
 
 

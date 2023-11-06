@@ -70,7 +70,7 @@ class CustomerController extends Controller
 
         $customer->update($validated);
 
-        return redirect('/app/customer-list');
+        return back()->with('message', 'Ficha de cliente editada correctamente');
 
     }
 
@@ -78,7 +78,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($request['id']);
         $customer->delete();
-        return redirect('app/customer-list');
+        return back();
     }
 
     public function show ($slug)

@@ -93,6 +93,7 @@ class ReportController extends Controller
             'observaciones' =>"required|max:300",
             'estado' =>"required",
             'responsable' =>"required|exists:users,id",
+            'reparacion' => "max:1000",
         ]);
 
         $validated['slug'] = Str::slug($validated['numeroDeSerie']);
@@ -109,7 +110,7 @@ class ReportController extends Controller
         $report = Report::where('id', $id)->get()->firstOrFail();
         $report->update($validated);
 
-        return redirect('/app/report-list');
+        return back()->with('message', 'Parte de entrada editado correctamente');
 
     }
 
@@ -123,14 +124,9 @@ class ReportController extends Controller
         $report = Report::where('slug', $slug)->get()->firstOrFail();
         $report->update($validated);
 
+        return back()->with('message', 'Parte actualizado correctamente');
 
-        $customer = Customer::where('id', $report['customer_id'])->get()->firstOrFail();
-        $employee = User::where('id', $report['responsable'])->get()->firstOrFail();
-        return view('admin.single-report', [
-            "report" => $report,
-            "employee" => $employee,
-            "customer" => $customer,
-        ]);
+
     }
 
     public function show ($slug)

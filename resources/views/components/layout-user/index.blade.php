@@ -21,6 +21,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <!--Sweetalert2-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session("message"))
+        <script>
+            $(document).ready(function(){
+                let mensaje = "{{ session ('message')}}";
+                Swal.fire({
+                    'tittle': 'Resultado',
+                    'text': mensaje,
+                    'icon': 'success'
+                })
+            })
+        </script>
+    @endif
+
+   <script>
+        $(document).ready(function(){
+            $('.formEliminar').submit(function(e){
+                e.preventDefault();
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Se va a eliminar un registro!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Eliminar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                        
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
     <div class="container-fluid ">
