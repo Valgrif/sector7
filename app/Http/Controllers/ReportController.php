@@ -6,6 +6,7 @@ use App\Models\Report;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ReportController extends Controller
@@ -75,7 +76,7 @@ class ReportController extends Controller
 
     public function edit($slug)
     {
-        $report = Report::where('slug', $slug)->get()->firstOrFail();
+        $report = Report::where('slug', $slug)->firstOrFail();
         return view('admin.edit-report', [
             'report' => $report,
             "employees" => User::all(),
@@ -107,7 +108,7 @@ class ReportController extends Controller
 
         }
 
-        $report = Report::where('id', $id)->get()->firstOrFail();
+        $report = Report::where('id', $id)->firstOrFail();
         $report->update($validated);
 
         return back()->with('message', 'Parte de entrada editado correctamente');
@@ -121,7 +122,7 @@ class ReportController extends Controller
             'reparacion' => "required",
         ]);
 
-        $report = Report::where('slug', $slug)->get()->firstOrFail();
+        $report = Report::where('slug', $slug)->firstOrFail();
         $report->update($validated);
 
         return back()->with('message', 'Parte actualizado correctamente');
@@ -131,9 +132,9 @@ class ReportController extends Controller
 
     public function show ($slug)
     {
-        $report = Report::where('slug', $slug)->get()->firstOrFail();
-        $employee = User::where('id', $report['responsable'])->get()->firstOrFail();
-        $customer = Customer::where('id', $report['customer_id'])->get()->firstOrFail();
+        $report = Report::where('slug', $slug)->firstOrFail();
+        $employee = User::where('id', $report['responsable'])->firstOrFail();
+        $customer = Customer::where('id', $report['customer_id'])->firstOrFail();
         return view('admin.single-report', [
             "report" => $report,
             "employee" => $employee,

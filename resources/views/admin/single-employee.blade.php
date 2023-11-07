@@ -34,15 +34,15 @@
                 </thead>
                 <tbody>
                     @foreach ($reports as $report)
-                        <tr onclick="window.location='{{ route('show-report', $report->slug) }}'">
-                            <td scope="row">{{ $report->id }}</td>
-                            <td>{{ $report->producto }}</td>
-                            <td>{{ $report->incidencia }}</td>
-                            <td>{{ $report->estado }}</td>
+                        <tr>
+                            <td onclick="window.location='{{ route('show-report', $report->slug) }}'" scope="row">{{ $report->id }}</td>
+                            <td onclick="window.location='{{ route('show-report', $report->slug) }}'">{{ $report->producto }}</td>
+                            <td onclick="window.location='{{ route('show-report', $report->slug) }}'">{{ $report->incidencia }}</td>
+                            <td onclick="window.location='{{ route('show-report', $report->slug) }}'">{{ $report->estado }}</td>
                             <td>
-                                <form action="{{ route('delete-report') }}" method="post">
+                                <form action="{{ route('delete-report') }}" method="post" class="formEliminar">
                                     @csrf
-                                    <a class="btn btn-primary" href="">
+                                    <a class="btn btn-primary" href="{{route('edit-report', $report->slug)}}">
                                         <i class="bi bi-pencil"></i></a>
                                     <input type="hidden" name="id" value={{ $report->id }}>
                                     <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>

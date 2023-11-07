@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('role')->nullable();
             $table->string('apellidos');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->string('direccion');
             $table->string('dni');
             $table->string('telefono');

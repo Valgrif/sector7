@@ -52,9 +52,6 @@ class RegisteredUserController extends Controller
 
         $validated['foto'] = "/images/profile/" . $picture_file_name;
 
-        //dd($validated);
-
-
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -67,7 +64,7 @@ class RegisteredUserController extends Controller
             'role' => 'Tecnico',
         ]);
 
-        return redirect('/app/employee-list');
+        return back()->with('message', 'Empleado nuevo registrado correctamente');    
     }
 
     public function list()
@@ -95,15 +92,21 @@ class RegisteredUserController extends Controller
 
         ]);
 
-        $picture = $request->file('foto');
-        $picture_file_name = $picture->getClientOriginalName();
-        $picture->move(public_path('images/profile'), $picture_file_name);
+        if ($request->hasFile('foto')) {
+            $picture = $request->file('foto');
+    
+            if ($picture->isValid()) {
+                $picture_file_name = $picture->getClientOriginalName();
+                $picture->move(public_path('images/profile'), $picture_file_name);
+                $validated['foto'] = "/images/profile/" . $picture_file_name;
+            } else {
+                return back()->with('error', 'Error al subir la imagen.');
+            }
+        }
 
-        $validated['foto'] = "/images/profile/" . $picture_file_name;
+        $user->update($validated);
 
-        $user->update();
-
-        return redirect('/app/employee-list');
+        return back()->with('message', 'Ficha de empleado editada correctamente');    
     }
 
     public function destroy(Request $request)

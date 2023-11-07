@@ -34,7 +34,7 @@
                                 <td>
                                     <form action="{{ route('delete-report') }}" method="post">
                                         @csrf
-                                        <a class="btn btn-primary" href="">
+                                        <a class="btn btn-primary" href="{{route('edit-report', $report->slug)}}">
                                             <i class="bi bi-pencil"></i></a>
                                         <input type="hidden" name="id" value={{ $report->id }}>
                                         <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i>
