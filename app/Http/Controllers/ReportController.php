@@ -108,7 +108,7 @@ class ReportController extends Controller
 
         }
 
-        $report = Report::where('id', $id)->firstOrFail();
+        $report = Report::where('id', $id)->get()->firstOrFail();
         $report->update($validated);
 
         return back()->with('message', 'Parte de entrada editado correctamente');

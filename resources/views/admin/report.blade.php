@@ -29,7 +29,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">NUMERO DE SERIE</th>
+                            <th scope="col">NUMERO DE SERIE </th>
                             <th scope="col">PRODUCTO</th>
                             <th scope="col">AVERIA</th>
                             <th scope="col" wire:click="">ESTADO</th>
