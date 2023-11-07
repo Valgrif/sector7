@@ -56,13 +56,5 @@
                
             </ul>
         </div>
-
-        <!-- <div class="col py-3">
-                       <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0 text-white">
-                    <i class="fs-4 bi bi-currency-exchange"></i> <span class="ms-1 d-none d-sm-inline">Facturación</span>
-                </a>
-            </li>
-        </div>-->
     </div>
 </div>
