@@ -28,7 +28,7 @@
                             selectable: true,
                             selectHelper: true,
                             select: function (start, end, allDay) {
-                                var title = prompt('Event Title:');
+                                var title = prompt('Nombre de evento:');
                                 if (title) {
                                     var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
                                     var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
