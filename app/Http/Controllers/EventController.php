@@ -71,8 +71,9 @@ class EventController extends Controller
     {
         $id = Auth::id();
         $events = DB::table('events')
-                ->whereDate('start', now()
-                )->get();
+                ->whereDate('start', '<=', now())
+                ->whereDate('end', '>=', now())
+                ->get();
 
         return view('admin.home', [
             "events" => $events,

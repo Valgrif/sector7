@@ -118,7 +118,7 @@ class ReportController extends Controller
     public function repair(Request $request, $slug)
     {
         $validated = $request->validate([
-            'estado' => "required",
+            'estado' => "max:500",
             'reparacion' => "required",
         ]);
 

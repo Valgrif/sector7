@@ -12,7 +12,7 @@ class CustomerController extends Controller
 {
     public function new_form()
     {
-        return view('components.customer.create');
+        return view('admin.customers');
     }
 
     public function create(Request $request)

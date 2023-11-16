@@ -38,13 +38,16 @@ Route::patch('/app/{customer}/update', [CustomerController::class, 'update'])->m
 
 //---------- EMPLOYEE -----------------------------------------------------------------------------------------------------//
 
-Route::get('/app/new-employee', [RegisteredUserController::class, 'create'])->middleware(['auth', 'verified'])->name('new-employee-form');
-Route::post('/app/new-employee', [RegisteredUserController::class, 'store'])->middleware(['auth'])->name('create-employee');
-Route::get('/app/employee-list', [RegisteredUserController::class, 'list'])->middleware(['auth', 'verified'])->name('list-employees');
-Route::post('/app/employee-list', [RegisteredUserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-employee');
-Route::get('/app/employee/{dni}', [RegisteredUserController::class, 'show'])->middleware(['auth', 'verified'])->name('show-employee');
-Route::get('/app/edit/employee{id}', [RegisteredUserController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-employee');
-Route::patch('/app/update/employee{id}', [RegisteredUserController::class, 'update'])->middleware(['auth', 'verified'])->name('update-employee');
+Route::group(['middleware' => ['test']], function ()
+{
+    Route::get('/app/new-employee', [RegisteredUserController::class, 'create'])->middleware(['auth', 'verified'])->name('new-employee-form');
+    Route::post('/app/new-employee', [RegisteredUserController::class, 'store'])->middleware(['auth'])->name('create-employee');
+    Route::get('/app/employee-list', [RegisteredUserController::class, 'list'])->middleware(['auth', 'verified'])->name('list-employees');
+    Route::post('/app/employee-list', [RegisteredUserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete-employee');
+    Route::get('/app/employee/{dni}', [RegisteredUserController::class, 'show'])->middleware(['auth', 'verified'])->name('show-employee');
+    Route::get('/app/edit/employee/{id}', [RegisteredUserController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit-employee');
+    Route::patch('/app/update/employee/{id}', [RegisteredUserController::class, 'update'])->middleware(['auth', 'verified'])->name('update-employee');
+});
 
 //---------- REPORT -------------------------------------------------------------------------------------------------------//
 

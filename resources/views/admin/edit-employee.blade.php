@@ -5,7 +5,7 @@
             <x-layout-user.errors />
 
 
-        <form action="{{ route('update-employee', $user->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('update-employee', $user) }}" method="post" enctype="multipart/form-data">
             @csrf @method('patch')
             <div class="form-floating mb-1">
                 <input class="form-control" type="text" name="name" id="name" placeholder="Nombre"
@@ -48,7 +48,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary ms-auto">Actualizar</button>
-            <a  class="btn btn-danger" href="/app/employee-list"><i class="bi bi-x-circle-fill"></i></a>
+            <a  class="btn btn-danger" href="{{route('update-employee', $user)}}"><i class="bi bi-x-circle-fill"></i></a>
 
         </form>
     </div>

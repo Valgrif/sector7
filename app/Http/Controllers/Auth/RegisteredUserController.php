@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
@@ -60,11 +61,11 @@ class RegisteredUserController extends Controller
             'direccion' => $request->direccion,
             'telefono' => $request->telefono,
             'dni' => $request->dni,
-            'foto' =>$request->foto,
+            'foto' =>"/images/profile/" . $picture_file_name,
             'role' => 'Tecnico',
         ]);
 
-        return back()->with('message', 'Empleado nuevo registrado correctamente');    
+        return back()->with('message', 'Empleado nuevo registrado correctamente');
     }
 
     public function list()
@@ -79,11 +80,13 @@ class RegisteredUserController extends Controller
         return view('admin.edit-employee', ['user' => $user]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
+        $user = User::where('id', $id)->get()->firstOrFail();
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
             'apellidos' => ['required', 'string', 'max:255'],
             'direccion' => ['required', 'string', 'max:255'],
             'telefono' => ['required', 'string', 'min:9', 'max:9'],
@@ -94,7 +97,7 @@ class RegisteredUserController extends Controller
 
         if ($request->hasFile('foto')) {
             $picture = $request->file('foto');
-    
+
             if ($picture->isValid()) {
                 $picture_file_name = $picture->getClientOriginalName();
                 $picture->move(public_path('images/profile'), $picture_file_name);
@@ -106,7 +109,7 @@ class RegisteredUserController extends Controller
 
         $user->update($validated);
 
-        return back()->with('message', 'Ficha de empleado editada correctamente');    
+        return back()->with('message', 'Ficha de empleado editada correctamente');
     }
 
     public function destroy(Request $request)
